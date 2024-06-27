@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
 import SearchInput from '../searchInput/SearchInput';
 import { TfiMenu } from "react-icons/tfi";
+import MenuItems from '../../menuItems/MenuItems';
+
+
 
 const MultiLevelDrawer = () => {
   const [open, setOpen] = useState(false);
@@ -10,6 +13,7 @@ const MultiLevelDrawer = () => {
     setOpen(true);
   };
   const onCloseDrawer = () => {
+    console.log("DATS")
     setOpen(false);
   };
   const showChildrenDrawer = () => {
@@ -27,6 +31,7 @@ const MultiLevelDrawer = () => {
       <Drawer placement="left" width={520} closable={false} onClose={onCloseDrawer} open={open}>
         <h2 className="w-2">Flick</h2>
         {/* <hr /> */}
+        <MenuItems />
         <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
         <Button type="primary" onClick={showChildrenDrawer}>
           Two-level drawer

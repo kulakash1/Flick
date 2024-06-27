@@ -10,7 +10,8 @@ import {
 } from '@ant-design/icons';
 import { Button, Menu } from 'antd';
 
-const MenuItems = () => {
+const MenuItems = (props) => {
+  
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleCollapsed = () => {
