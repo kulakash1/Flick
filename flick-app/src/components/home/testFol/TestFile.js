@@ -1,6 +1,7 @@
-import React from 'react';
-import './Test.css'; // Add appropriate styles
-import Footer from '../footer/Footer';
+import React from "react";
+import "./Test.css"; // Add appropriate styles
+import Footer from "../footer/Footer";
+import WeekTopArticlesCard from "../weekTopArticles/WeekTopArticlesCard";
 
 function Header() {
   return (
@@ -21,7 +22,7 @@ function FeaturedMovie() {
 }
 
 function RecommendedMovies() {
-  const movies = ['Movie 1', 'Movie 2', 'Movie 3', 'Movie 4', 'Movie 5'];
+  const movies = ["Movie 1", "Movie 2", "Movie 3", "Movie 4", "Movie 5"];
   return (
     <div className="recommended-movies">
       <h3>Recommended</h3>
@@ -38,7 +39,7 @@ function RecommendedMovies() {
 }
 
 function BestOf2024() {
-  const bestMovies = ['Movie A', 'Movie B', 'Movie C', 'Movie D'];
+  const bestMovies = ["Movie A", "Movie B", "Movie C", "Movie D"];
   return (
     <div className="best-of-2024">
       <h3>Best of 2024</h3>
@@ -53,8 +54,8 @@ function BestOf2024() {
 }
 
 function Catalogue() {
-  const categories = ['Action', 'Comedy', 'Drama', 'Sci-Fi', 'Horror'];
-  const movies = Array(8).fill('Movie Title');
+  const categories = ["Action", "Comedy", "Drama", "Sci-Fi", "Horror"];
+  const movies = Array(8).fill("Movie Title");
   return (
     <div className="catalogue">
       <h3>Catalogue</h3>
@@ -78,7 +79,7 @@ function Catalogue() {
 }
 
 function RecentTrailers() {
-  const trailers = ['Trailer 1', 'Trailer 2', 'Trailer 3', 'Trailer 4'];
+  const trailers = ["Trailer 1", "Trailer 2", "Trailer 3", "Trailer 4"];
   return (
     <div className="recent-trailers">
       <h3>Recent Trailers</h3>
@@ -95,7 +96,7 @@ function RecentTrailers() {
 }
 
 function NewMovieReleases() {
-  const movies = ['New Movie 1', 'New Movie 2', 'New Movie 3', 'New Movie 4'];
+  const movies = ["New Movie 1", "New Movie 2", "New Movie 3", "New Movie 4"];
   return (
     <div className="new-movie-releases">
       <h3>New Movie Releases</h3>
@@ -112,7 +113,7 @@ function NewMovieReleases() {
 }
 
 function NewWebReleases() {
-  const movies = ['New Web 1', 'New Web 2', 'New Web 3', 'New Web 4'];
+  const movies = ["New Web 1", "New Web 2", "New Web 3", "New Web 4"];
   return (
     <div className="new-web-releases">
       <h3>New Web Releases</h3>
@@ -130,10 +131,10 @@ function NewWebReleases() {
 
 function TopComments() {
   const comments = [
-    { title: 'Movie Title', comment: 'Great movie!', user: 'User1' },
-    { title: 'Movie Title', comment: 'Loved it!', user: 'User2' },
-    { title: 'Movie Title', comment: 'Amazing!', user: 'User3' },
-    { title: 'Movie Title', comment: 'Fantastic!', user: 'User4' }
+    { title: "Movie Title", comment: "Great movie!", user: "User1" },
+    { title: "Movie Title", comment: "Loved it!", user: "User2" },
+    { title: "Movie Title", comment: "Amazing!", user: "User3" },
+    { title: "Movie Title", comment: "Fantastic!", user: "User4" },
   ];
   return (
     <div className="top-comments">
@@ -150,7 +151,7 @@ function TopComments() {
 }
 
 function PopularReviewers() {
-  const reviewers = ['Reviewer 1', 'Reviewer 2', 'Reviewer 3', 'Reviewer 4'];
+  const reviewers = ["Reviewer 1", "Reviewer 2", "Reviewer 3", "Reviewer 4"];
   return (
     <div className="popular-reviewers">
       <h3>Popular Reviewers</h3>
@@ -164,7 +165,12 @@ function PopularReviewers() {
 }
 
 function TopReviewers() {
-  const reviewers = ['Top Reviewer 1', 'Top Reviewer 2', 'Top Reviewer 3', 'Top Reviewer 4'];
+  const reviewers = [
+    "Top Reviewer 1",
+    "Top Reviewer 2",
+    "Top Reviewer 3",
+    "Top Reviewer 4",
+  ];
   return (
     <div className="top-reviewers">
       <h3>Top Reviewers This Week</h3>
@@ -179,9 +185,9 @@ function TopReviewers() {
 
 function TopArticles() {
   const articles = Array(6).fill({
-    title: 'Article Title',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    author: 'Author Name'
+    title: "Article Title",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    author: "Author Name",
   });
   return (
     <div className="top-articles">
@@ -218,6 +224,21 @@ function HomePage() {
         <TopReviewers />
       </div>
       <TopArticles />
+      <WeekTopArticlesCard
+        links={[
+          "https://www.facebook.com",
+          "https://www.twitter.com",
+          "https://www.instagram.com",
+        ]}
+        title="Top Social Media Platforms"
+        description="Links to top social media platforms"
+        codeLinks={[
+          "https://github.com",
+          "https://gitlab.com",
+          "https://bitbucket.org",
+        ]}
+      />
+
       <Footer />
     </div>
   );
