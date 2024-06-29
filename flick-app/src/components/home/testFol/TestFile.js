@@ -206,6 +206,21 @@ function TopArticles() {
 }
 
 function HomePage() {
+
+  const images = ["Image Location", "Image 2", "Image 3"];
+  const titles = ["Article Title", "AT 2", "AT 3"];
+  const byPersons = ["By This Person", "BTP 2", "BTP 3"];
+  const descriptions = [
+    "Links to top social media platforms",
+    "Desc 2",
+    "Desc 3",
+  ];
+  const links = [
+    "https://www.facebook.com",
+    "https://www.twitter.com",
+    "https://www.instagram.com",
+  ];
+  
   return (
     <div className="homepage">
       <Header />
@@ -224,20 +239,24 @@ function HomePage() {
         <TopReviewers />
       </div>
       <TopArticles />
-      <WeekTopArticlesCard
-        links={[
-          "https://www.facebook.com",
-          "https://www.twitter.com",
-          "https://www.instagram.com",
-        ]}
-        title="Top Social Media Platforms"
-        description="Links to top social media platforms"
-        codeLinks={[
-          "https://github.com",
-          "https://gitlab.com",
-          "https://bitbucket.org",
-        ]}
-      />
+      <div className="flex flex-col p-20">
+      <div>
+        <h2>Top Articles This Week</h2>
+      </div>
+      <div className="flex flex-row justify-between">
+          {titles.map((title, index) => (
+            <WeekTopArticlesCard
+              key={index}
+              image={images[index]}
+              title={title}
+              byPerson={byPersons[index]}
+              description={descriptions[index]}
+              links={links[index]}
+            />
+          ))}
+        </div>
+
+      </div>
 
       <Footer />
     </div>
