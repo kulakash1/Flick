@@ -3,9 +3,9 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <div className="flex flex-col bg-[#6d435a]">
+      <div className="flex flex-col bg-[#6d435a] text-white p-4">
         {/* First Section */}
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-between">
           <div className="flex flex-col">
             <h4>Company</h4>
             <p>About</p>
@@ -31,17 +31,21 @@ const Footer = () => {
           </div>
           <div className="flex flex-col">
             <h4>Download</h4>
-            <p>Join millions of people who build a fully integrated sales and maketing solution.</p>
+            <p>Join millions of people who build a fully integrated sales and marketing solution.</p>
           </div>
         </div>
         {/* Horizontal Rule */}
         <div>
-        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-red-600" />
+          <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-red-600" />
         </div>
         {/* Third Section */}
         <div className="flex flex-row justify-between">
-        <p>© 2024 Company Name. All rights reserved.</p>
-        <p>Terms & Conditions • Privacy Policy</p>
+          <div>
+            <p>Copyright ©2024 Flick. All rights reserved.</p>
+          </div>
+          <div>
+            <p>Terms & Conditions • Privacy Policy</p>
+          </div>
         </div>
       </div>
     </div>
