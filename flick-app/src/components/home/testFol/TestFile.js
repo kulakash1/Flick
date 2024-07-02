@@ -132,60 +132,6 @@ function NewWebReleases() {
   );
 }
 
-function TopComments() {
-  const comments = [
-    { title: "Movie Title", comment: "Great movie!", user: "User1" },
-    { title: "Movie Title", comment: "Loved it!", user: "User2" },
-    { title: "Movie Title", comment: "Amazing!", user: "User3" },
-    { title: "Movie Title", comment: "Fantastic!", user: "User4" },
-  ];
-  return (
-    <div className="top-comments">
-      <h3>Top Comments This Week</h3>
-      {comments.map((comment, index) => (
-        <div className="comment-card" key={index}>
-          <h4>{comment.title}</h4>
-          <p>{comment.comment}</p>
-          <small>{comment.user}</small>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function PopularReviewers() {
-  const reviewers = ["Reviewer 1", "Reviewer 2", "Reviewer 3", "Reviewer 4"];
-  return (
-    <div className="popular-reviewers">
-      <h3>Popular Reviewers</h3>
-      {reviewers.map((reviewer, index) => (
-        <div className="reviewer-card" key={index}>
-          <p>{reviewer}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function TopReviewers() {
-  const reviewers = [
-    "Top Reviewer 1",
-    "Top Reviewer 2",
-    "Top Reviewer 3",
-    "Top Reviewer 4",
-  ];
-  return (
-    <div className="top-reviewers">
-      <h3>Top Reviewers This Week</h3>
-      {reviewers.map((reviewer, index) => (
-        <div className="reviewer-card" key={index}>
-          <p>{reviewer}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function TopArticles() {
   const articles = Array(6).fill({
     title: "Article Title",
@@ -223,6 +169,26 @@ function HomePage() {
     "https://www.instagram.com",
   ];
 
+  // For Top Comments of This Week
+  const weekTopCommentUserImages = ["Image Location.jpg", "Image 2", "Image 3"];
+  const movieTitles = ["Movie Title", "MT 2", "MT 3"];
+  const movieYear = ["2024", "Year 2", "Year 3"];
+  const movieRatings = ["5", "4", "2"];
+  const criticName = ["Critic Name", "Name 2", "Name 3"];
+  const userComment = [
+    "Comment Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi numquam eum explicabo magnam quidem cumque laborum rerum commodi dicta vitae?",
+    "Comment 2",
+    "Comment 3",
+  ];
+
+  const seeMoreLinks = [
+    "https://www.facebook.com",
+    "https://www.twitter.com",
+    "https://www.instagram.com",
+  ];
+
+  // For Popular Reviewers
+
   return (
     <div className="homepage">
       <Header />
@@ -235,11 +201,6 @@ function HomePage() {
       <RecentTrailers />
       <NewMovieReleases />
       <NewWebReleases />
-      <TopComments />
-      <div className="reviewers-section">
-        <PopularReviewers />
-        <TopReviewers />
-      </div>
       <div className="flex flex-col p-20">
         <div>
           <h2>Top Comments This Week</h2>
@@ -248,8 +209,27 @@ function HomePage() {
           <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
         </div>
         <div className="flex flex-row justify-between">
-          <div>
-            <WeekTopCommentsCard />
+          <div className="flex flex-col">
+            
+            {userComment.map((userComment, index) => (
+            <div>
+              <div>
+                <WeekTopCommentsCard 
+                key={index}
+                weekTopCommentUserImages={weekTopCommentUserImages[index]}
+                movieTitles={movieTitles[index]}
+                movieYear={movieYear[index]}
+                movieRatings={movieRatings[index]}
+                criticName={criticName[index]}
+                userComment={userComment[index]}
+                seeMoreLinks={seeMoreLinks[index]}
+                />
+              </div>
+              <div>
+                <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+              </div>
+            </div>
+          ))}
           </div>
           <div className="flex flex-col justify-between">
             <div>
