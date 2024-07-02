@@ -2,6 +2,9 @@ import React from "react";
 import "./Test.css"; // Add appropriate styles
 import Footer from "../footer/Footer";
 import WeekTopArticlesCard from "../weekTopArticles/WeekTopArticlesCard";
+import { WeekTopCommentsCard } from "../weekTopComments/WeekTopCommentsCard";
+import { WeekPopularReviewers } from "../weekTopComments/WeekPopularReviewers";
+import { WeekTopReviewers } from "../weekTopComments/WeekTopReviewers";
 
 function Header() {
   return (
@@ -206,11 +209,10 @@ function TopArticles() {
 }
 
 function HomePage() {
-
   const images = ["Image Location", "Image 2", "Image 3"];
   const titles = ["Article Title", "AT 2", "AT 3"];
   const byPersons = ["By This Person", "BTP 2", "BTP 3"];
-  const descriptions = [
+  const articleDescription = [
     "Links to top social media platforms",
     "Desc 2",
     "Desc 3",
@@ -220,7 +222,7 @@ function HomePage() {
     "https://www.twitter.com",
     "https://www.instagram.com",
   ];
-  
+
   return (
     <div className="homepage">
       <Header />
@@ -238,24 +240,57 @@ function HomePage() {
         <PopularReviewers />
         <TopReviewers />
       </div>
+      <div className="flex flex-col p-20">
+        <div>
+          <h2>Top Comments This Week</h2>
+        </div>
+        <div>
+          <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+        </div>
+        <div className="flex flex-row justify-between">
+          <div>
+            <WeekTopCommentsCard />
+          </div>
+          <div className="flex flex-col justify-between">
+            <div>
+              <div>
+                <h1>Popular Reviewers</h1>
+              </div>
+              <div>
+                <WeekPopularReviewers />
+              </div>
+            </div>
+            <div>
+              <div>
+                <h1>Top Reviewers of This Week</h1>
+              </div>
+              <div>
+                <WeekTopReviewers />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <TopArticles />
       <div className="flex flex-col p-20">
-      <div>
-        <h2>Top Articles This Week</h2>
-      </div>
-      <div className="flex flex-row justify-between">
+        <div>
+          <h2>Top Articles This Week</h2>
+        </div>
+        <div>
+          <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+        </div>
+        <div className="flex flex-row justify-between">
           {titles.map((title, index) => (
             <WeekTopArticlesCard
               key={index}
               image={images[index]}
               title={title}
               byPerson={byPersons[index]}
-              description={descriptions[index]}
+              articleDescription={articleDescription[index]}
               links={links[index]}
             />
           ))}
         </div>
-
       </div>
 
       <Footer />
