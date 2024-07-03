@@ -188,6 +188,16 @@ function HomePage() {
   ];
 
   // For Popular Reviewers
+  const criticNameReviewersPopular = ["Critic Name", "Name 2", "Name 3"];
+  const imageReviewersPopular = ["Critic Image Popular", "CI 2", "CI 3"];
+  const totalNumMoviesReviewersPopular = ["105", "5", "3"];
+  const totalNumReviewsPopular = ["999", "20", "50"];
+
+  // For Top Reviewers of this Week
+  const criticNameReviewersTop = ["Critic Name", "Name 2", "Name 3"];
+  const imageReviewersTop = ["Critic Image Popular", "CI 2", "CI 3"];
+  const totalNumMoviesReviewersTop = ["1705", "65", "3"];
+  const totalNumReviewsTop = ["35", "236", "567"];
 
   return (
     <div className="homepage">
@@ -210,42 +220,83 @@ function HomePage() {
         </div>
         <div className="flex flex-row justify-between">
           <div className="flex flex-col">
-            
             {userComment.map((userComment, index) => (
-            <div>
               <div>
-                <WeekTopCommentsCard 
-                key={index}
-                weekTopCommentUserImages={weekTopCommentUserImages[index]}
-                movieTitles={movieTitles[index]}
-                movieYear={movieYear[index]}
-                movieRatings={movieRatings[index]}
-                criticName={criticName[index]}
-                userComment={userComment[index]}
-                seeMoreLinks={seeMoreLinks[index]}
-                />
+                <div>
+                  <WeekTopCommentsCard
+                    key={index}
+                    weekTopCommentUserImages={weekTopCommentUserImages[index]}
+                    movieTitles={movieTitles[index]}
+                    movieYear={movieYear[index]}
+                    movieRatings={movieRatings[index]}
+                    criticName={criticName[index]}
+                    userComment={userComment[index]}
+                    seeMoreLinks={seeMoreLinks[index]}
+                  />
+                </div>
+                <div>
+                  <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+                </div>
               </div>
-              <div>
-                <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
-              </div>
-            </div>
-          ))}
+            ))}
           </div>
           <div className="flex flex-col justify-between">
             <div>
               <div>
                 <h1>Popular Reviewers</h1>
               </div>
-              <div>
-                <WeekPopularReviewers />
+              <div className="flex flex-col">
+                {criticNameReviewersPopular.map(
+                  (criticNameReviewersPopular, index) => (
+                    <div>
+                      <div>
+                        <WeekPopularReviewers
+                          key={index}
+                          criticNameReviewersPopular={
+                            criticNameReviewersPopular[index]
+                          }
+                          imageReviewersPopular={imageReviewersPopular[index]}
+                          totalNumMoviesReviewersPopular={
+                            totalNumMoviesReviewersPopular[index]
+                          }
+                          totalNumReviewsPopular={totalNumReviewsPopular[index]}
+                        />
+                      </div>
+                      <div>
+                        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+                      </div>
+                    </div>
+                  )
+                )}
               </div>
             </div>
             <div>
               <div>
                 <h1>Top Reviewers of This Week</h1>
               </div>
-              <div>
-                <WeekTopReviewers />
+              <div className="flex flex-col">
+                {criticNameReviewersTop.map(
+                  (criticNameReviewersTop, index) => (
+                    <div>
+                      <div>
+                        <WeekTopReviewers
+                          key={index}
+                          criticNameReviewersTop={
+                            criticNameReviewersTop[index]
+                          }
+                          imageReviewersTop={imageReviewersTop[index]}
+                          totalNumMoviesReviewersTop={
+                            totalNumMoviesReviewersTop[index]
+                          }
+                          totalNumReviewsTop={totalNumReviewsTop[index]}
+                        />
+                      </div>
+                      <div>
+                        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+                      </div>
+                    </div>
+                  )
+                )}
               </div>
             </div>
           </div>
