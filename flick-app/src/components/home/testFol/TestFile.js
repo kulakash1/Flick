@@ -132,28 +132,6 @@ function NewWebReleases() {
   );
 }
 
-function TopArticles() {
-  const articles = Array(6).fill({
-    title: "Article Title",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    author: "Author Name",
-  });
-  return (
-    <div className="top-articles">
-      <h3>Top Articles This Week</h3>
-      <div className="article-list">
-        {articles.map((article, index) => (
-          <div className="article-card" key={index}>
-            <h4>{article.title}</h4>
-            <p>{article.description}</p>
-            <small>{article.author}</small>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function HomePage() {
   const images = ["Image Location", "Image 2", "Image 3"];
   const titles = ["Article Title", "AT 2", "AT 3"];
@@ -240,7 +218,7 @@ function HomePage() {
               </div>
             ))}
           </div>
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col">
             <div>
               <div>
                 <h1>Popular Reviewers</h1>
@@ -270,7 +248,7 @@ function HomePage() {
                 )}
               </div>
             </div>
-            <div>
+            <div className="mt-9">
               <div>
                 <h1>Top Reviewers of This Week</h1>
               </div>
@@ -302,7 +280,6 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <TopArticles />
       <div className="flex flex-col p-20">
         <div>
           <h2>Top Articles This Week</h2>

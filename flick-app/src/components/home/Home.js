@@ -18,7 +18,7 @@ function Home() {
   return (
     // <div onClick={clickedOut}>
     <div>
-        <div className=' bg-[#352D39] h-screen'>
+        <div className=' bg-[#352D39] h-cover'>
         <div className="d-flex flex-row">
         {/* <MenuItems clicked={true}/> */}
         {/* <Navbar /> */}
