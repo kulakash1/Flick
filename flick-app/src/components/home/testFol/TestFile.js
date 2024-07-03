@@ -5,6 +5,8 @@ import WeekTopArticlesCard from "../weekTopArticles/WeekTopArticlesCard";
 import { WeekTopCommentsCard } from "../weekTopComments/WeekTopCommentsCard";
 import { WeekPopularReviewers } from "../weekTopComments/WeekPopularReviewers";
 import { WeekTopReviewers } from "../weekTopComments/WeekTopReviewers";
+import Carousel from "../carousel/Carousel";
+import { FilterSelection } from "../catalogue/FilterSelection";
 
 function Header() {
   return (
@@ -81,57 +83,6 @@ function Catalogue() {
   );
 }
 
-function RecentTrailers() {
-  const trailers = ["Trailer 1", "Trailer 2", "Trailer 3", "Trailer 4"];
-  return (
-    <div className="recent-trailers">
-      <h3>Recent Trailers</h3>
-      <div className="trailer-list">
-        {trailers.map((trailer, index) => (
-          <div className="trailer-card" key={index}>
-            <img src={`${trailer}.jpg`} alt={trailer} />
-            <p>{trailer}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function NewMovieReleases() {
-  const movies = ["New Movie 1", "New Movie 2", "New Movie 3", "New Movie 4"];
-  return (
-    <div className="new-movie-releases">
-      <h3>New Movie Releases</h3>
-      <div className="movie-list">
-        {movies.map((movie, index) => (
-          <div className="movie-card" key={index}>
-            <img src={`${movie}.jpg`} alt={movie} />
-            <p>{movie}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function NewWebReleases() {
-  const movies = ["New Web 1", "New Web 2", "New Web 3", "New Web 4"];
-  return (
-    <div className="new-web-releases">
-      <h3>New Web Releases</h3>
-      <div className="movie-list">
-        {movies.map((movie, index) => (
-          <div className="movie-card" key={index}>
-            <img src={`${movie}.jpg`} alt={movie} />
-            <p>{movie}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function HomePage() {
   const images = ["Image Location", "Image 2", "Image 3"];
   const titles = ["Article Title", "AT 2", "AT 3"];
@@ -177,6 +128,53 @@ function HomePage() {
   const totalNumMoviesReviewersTop = ["1705", "65", "3"];
   const totalNumReviewsTop = ["35", "236", "567"];
 
+  // For Carousel New Web Releases
+  const webItems = [
+    { imageUrl: "./images/img Test.png", title: "Movie Title 1", rating: 5 },
+    { imageUrl: "path/to/image2.jpg", title: "Movie Title 2", rating: 3.5 },
+    { imageUrl: "path/to/image3.jpg", title: "Movie Title 3", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Movie Title 4", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Movie Title 5", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Movie Title 6", rating: 3 },
+    { imageUrl: "path/to/image1.jpg", title: "Movie Title 1", rating: 5 },
+    { imageUrl: "path/to/image2.jpg", title: "Movie Title 2", rating: 4 },
+    { imageUrl: "path/to/image3.jpg", title: "Movie Title 3", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Movie Title 4", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Movie Title 5", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Movie Title 6", rating: 3 },
+  ];
+
+  // For Carousel New Movie Releases
+  const movieItems = [
+    { imageUrl: "path/to/image2.jpg", title: "Movie Title 2", rating: 3.5 },
+    { imageUrl: "path/to/image3.jpg", title: "Movie Title 3", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Movie Title 4", rating: 4 },
+    { imageUrl: "./images/img Test.png", title: "Movie Title 1", rating: 5 },
+    { imageUrl: "path/to/image5.jpg", title: "Movie Title 5", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Movie Title 6", rating: 3 },
+    { imageUrl: "path/to/image1.jpg", title: "Movie Title 1", rating: 5 },
+    { imageUrl: "path/to/image2.jpg", title: "Movie Title 2", rating: 4 },
+    { imageUrl: "path/to/image3.jpg", title: "Movie Title 3", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Movie Title 4", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Movie Title 5", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Movie Title 6", rating: 3 },
+  ];
+  // For Carousel New Trailer Releases
+  const trailerItems = [
+    { imageUrl: "path/to/image2.jpg", title: "Trailer Title 2", rating: 3.5 },
+    { imageUrl: "./images/img Test.png", title: "Trailer Title 1", rating: 5 },
+    { imageUrl: "path/to/image3.jpg", title: "Trailer Title 3", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Trailer Title 4", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Trailer Title 5", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Trailer Title 6", rating: 3 },
+    { imageUrl: "path/to/image1.jpg", title: "Trailer Title 1", rating: 5 },
+    { imageUrl: "path/to/image2.jpg", title: "Trailer Title 2", rating: 4 },
+    { imageUrl: "path/to/image3.jpg", title: "Trailer Title 3", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Trailer Title 4", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Trailer Title 5", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Trailer Title 6", rating: 3 },
+  ];
+
   return (
     <div className="homepage">
       <Header />
@@ -186,10 +184,46 @@ function HomePage() {
         <BestOf2024 />
       </div>
       <Catalogue />
-      <RecentTrailers />
-      <NewMovieReleases />
-      <NewWebReleases />
+
       <div className="flex flex-col p-20">
+        <div className="flex justify-center">
+          <h2>Catalogue</h2>
+        </div>
+        <div>
+          <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+        </div>
+        <div>
+          <FilterSelection />
+        </div>
+        <div>
+          <h2>Recent Trailers</h2>
+        </div>
+        <div>
+          <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+        </div>
+        <div>
+          <Carousel items={trailerItems} />
+        </div>
+        <div>
+          <h2>New Movie Releases</h2>
+        </div>
+        <div>
+          <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+        </div>
+        <div>
+          <Carousel items={movieItems} />
+        </div>
+
+        <div>
+          <h2>New Web Releases</h2>
+        </div>
+        <div>
+          <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+        </div>
+        <div>
+          <Carousel items={webItems} />
+        </div>
+
         <div>
           <h2>Top Comments This Week</h2>
         </div>
@@ -253,28 +287,24 @@ function HomePage() {
                 <h1>Top Reviewers of This Week</h1>
               </div>
               <div className="flex flex-col">
-                {criticNameReviewersTop.map(
-                  (criticNameReviewersTop, index) => (
+                {criticNameReviewersTop.map((criticNameReviewersTop, index) => (
+                  <div>
                     <div>
-                      <div>
-                        <WeekTopReviewers
-                          key={index}
-                          criticNameReviewersTop={
-                            criticNameReviewersTop[index]
-                          }
-                          imageReviewersTop={imageReviewersTop[index]}
-                          totalNumMoviesReviewersTop={
-                            totalNumMoviesReviewersTop[index]
-                          }
-                          totalNumReviewsTop={totalNumReviewsTop[index]}
-                        />
-                      </div>
-                      <div>
-                        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
-                      </div>
+                      <WeekTopReviewers
+                        key={index}
+                        criticNameReviewersTop={criticNameReviewersTop[index]}
+                        imageReviewersTop={imageReviewersTop[index]}
+                        totalNumMoviesReviewersTop={
+                          totalNumMoviesReviewersTop[index]
+                        }
+                        totalNumReviewsTop={totalNumReviewsTop[index]}
+                      />
                     </div>
-                  )
-                )}
+                    <div>
+                      <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
