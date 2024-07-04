@@ -7,6 +7,7 @@ import { WeekPopularReviewers } from "../weekTopComments/WeekPopularReviewers";
 import { WeekTopReviewers } from "../weekTopComments/WeekTopReviewers";
 import Carousel from "../carousel/Carousel";
 import { FilterSelection } from "../catalogue/FilterSelection";
+import TetsFilt from "../catalogue/TestFilt";
 
 function Header() {
   return (
@@ -175,6 +176,8 @@ function HomePage() {
     { imageUrl: "path/to/image6.jpg", title: "Trailer Title 6", rating: 3 },
   ];
 
+  //For Catalogue Dropdown
+  const movieDropdownData = ["India", "Japan", "America", "England", "Pakistan"]
   return (
     <div className="homepage">
       <Header />
@@ -194,6 +197,9 @@ function HomePage() {
         </div>
         <div>
           <FilterSelection />
+        </div>
+        <div>
+          <TetsFilt options={movieDropdownData} />
         </div>
         <div>
           <h2>Recent Trailers</h2>
