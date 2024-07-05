@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Test.css"; // Add appropriate styles
 import Footer from "../footer/Footer";
 import WeekTopArticlesCard from "../weekTopArticles/WeekTopArticlesCard";
@@ -10,7 +10,7 @@ import FilterSelection from "../catalogue/FilterSelection";
 // import TetsFilt from "../catalogue/TestFilt";
 import { IoSearchCircleOutline } from "react-icons/io5";
 import { Pagination } from "antd";
-import { MovieCatalogueCard } from "../catalogue/MovieCatalogueCard";
+import MovieCatalogueCard from "../catalogue/MovieCatalogueCard.js";
 
 function Header() {
   return (
@@ -201,6 +201,116 @@ function HomePage() {
     { value: "Pakistan", label: "Pakistan" },
   ];
 
+  // For Catalogue
+  const movieCatalogueItems = [
+    {
+      imageUrl: "path_to_image1.png",
+      title: "Movie Title 1",
+      rating: 3.5,
+      year: "2024",
+      genre: "Drama",
+      country: "India",
+    },
+    {
+      imageUrl: "path_to_image2.png",
+      title: "Movie Title 2",
+      rating: 4.0,
+      year: "2023",
+      genre: "Action",
+      country: "USA",
+    },
+    {
+      imageUrl: "path_to_image3.png",
+      title: "Movie Title 3",
+      rating: 4.2,
+      year: "2022",
+      genre: "Comedy",
+      country: "UK",
+    },
+    {
+      imageUrl: "path_to_image4.png",
+      title: "Movie Title 4",
+      rating: 3.8,
+      year: "2023",
+      genre: "Romance",
+      country: "France",
+    },
+    {
+      imageUrl: "path_to_image5.png",
+      title: "Movie Title 5",
+      rating: 4.5,
+      year: "2021",
+      genre: "Thriller",
+      country: "Canada",
+    },
+    {
+      imageUrl: "path_to_image6.png",
+      title: "Movie Title 6",
+      rating: 3.9,
+      year: "2022",
+      genre: "Science Fiction",
+      country: "Australia",
+    },
+    {
+      imageUrl: "path_to_image7.png",
+      title: "Movie Title 7",
+      rating: 4.1,
+      year: "2023",
+      genre: "Fantasy",
+      country: "Brazil",
+    },
+    {
+      imageUrl: "path_to_image8.png",
+      title: "Movie Title 8",
+      rating: 3.7,
+      year: "2022",
+      genre: "Mystery",
+      country: "Germany",
+    },
+    {
+      imageUrl: "path_to_image9.png",
+      title: "Movie Title 9",
+      rating: 4.3,
+      year: "2021",
+      genre: "Animation",
+      country: "South Korea",
+    },
+    {
+      imageUrl: "path_to_image10.png",
+      title: "Movie Title 10",
+      rating: 3.6,
+      year: "2023",
+      genre: "Action",
+      country: "Mexico",
+    },
+    {
+      imageUrl: "path_to_image11.png",
+      title: "Movie Title 11",
+      rating: 4.4,
+      year: "2022",
+      genre: "Drama",
+      country: "Spain",
+    },
+    {
+      imageUrl: "path_to_image12.png",
+      title: "Movie Title 12",
+      rating: 3.8,
+      year: "2021",
+      genre: "Comedy",
+      country: "Italy",
+    },
+    {
+      imageUrl: "path_to_image13.png",
+      title: "Movie Title 13",
+      rating: 4.0,
+      year: "2024",
+      genre: "Romance",
+      country: "Netherlands",
+    },
+  ];
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 11;
+
   return (
     <div className="homepage">
       <Header />
@@ -262,17 +372,30 @@ function HomePage() {
             <IoSearchCircleOutline className="text-[50px] w-[40px]" />
           </div>
         </div>
-        <div>
-          <MovieCatalogueCard item={trailerItems} />
+        <div className="flex flex-wrap justify-between">
+          {movieCatalogueItems
+            .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+            .map((item, index) => (
+              <div key={index} className="w-1/4 p-4">
+                <MovieCatalogueCard item={item} />
+              </div>
+            ))}
         </div>
+
         <div className="flex flex-row justify-center">
           <div>
             <Pagination
-              total={85}
+              // total={movieItems.length}
+              total={movieCatalogueItems.length}
+              current={currentPage}
+              pageSize={itemsPerPage}
+              onChange={setCurrentPage}
               showSizeChanger
               showQuickJumper
               showTotal={(total) => `Total ${total} items`}
             />
+
+            {/* MovieCatalogueCard */}
           </div>
         </div>
         <div>
