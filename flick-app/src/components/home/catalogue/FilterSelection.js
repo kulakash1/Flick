@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
 import makeAnimated from 'react-select/animated';
 
 const animatedComponents = makeAnimated();
@@ -55,16 +55,25 @@ const customStyles = (filterWidth, filterHeight) => ({
   }),
 });
 
+const ClearIndicator = (props) => {
+  return (
+    <components.ClearIndicator {...props}>
+      <div style={{ padding: '0 5px', cursor: 'pointer' }}>✖</div>
+    </components.ClearIndicator>
+  );
+};
+
 export default function FilterSelection({ options, filterHeight, filterWidth, placeholderData }) {
   return (
     <div className="w-full flex justify-center">
       <Select
         closeMenuOnSelect={false}
-        components={animatedComponents}
+        components={{ ...animatedComponents, ClearIndicator }}
         isMulti={false}
         options={options} // Use options directly if already in { value, label } format
         styles={customStyles(filterWidth, filterHeight)}
         placeholder={`Choose ${placeholderData}`}
+        isClearable
       />
     </div>
   );

@@ -8,6 +8,7 @@ import { WeekTopReviewers } from "../weekTopComments/WeekTopReviewers";
 import Carousel from "../carousel/Carousel";
 import FilterSelection from "../catalogue/FilterSelection";
 // import TetsFilt from "../catalogue/TestFilt";
+import { IoSearchCircleOutline } from "react-icons/io5";
 
 function Header() {
   return (
@@ -55,31 +56,6 @@ function BestOf2024() {
           <p>{movie}</p>
         </div>
       ))}
-    </div>
-  );
-}
-
-function Catalogue() {
-  const categories = ["Action", "Comedy", "Drama", "Sci-Fi", "Horror"];
-  const movies = Array(8).fill("Movie Title");
-  return (
-    <div className="catalogue">
-      <h3>Catalogue</h3>
-      <div className="tabs">
-        {categories.map((category, index) => (
-          <button className="tab" key={index}>
-            {category}
-          </button>
-        ))}
-      </div>
-      <div className="movie-grid">
-        {movies.map((movie, index) => (
-          <div className="movie-card" key={index}>
-            <img src={`${movie}.jpg`} alt={movie} />
-            <p>{movie}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
@@ -231,7 +207,6 @@ const countryDropdownData = [
         <RecommendedMovies />
         <BestOf2024 />
       </div>
-      <Catalogue />
 
       <div className="flex flex-col p-20">
         <div className="flex justify-center">
@@ -280,6 +255,9 @@ const countryDropdownData = [
               filterHeight="50px"
               placeholderData="Country"
             />
+          </div>
+          <div>
+          <IoSearchCircleOutline className="text-[50px] w-[40px]" />
           </div>
         </div>
         <div>
