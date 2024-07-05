@@ -9,6 +9,8 @@ import Carousel from "../carousel/Carousel";
 import FilterSelection from "../catalogue/FilterSelection";
 // import TetsFilt from "../catalogue/TestFilt";
 import { IoSearchCircleOutline } from "react-icons/io5";
+import { Pagination } from "antd";
+import { MovieCatalogueCard } from "../catalogue/MovieCatalogueCard";
 
 function Header() {
   return (
@@ -106,98 +108,98 @@ function HomePage() {
   const totalNumReviewsTop = ["35", "236", "567"];
 
   // For Carousel New Web Releases
-const webItems = [
-  { imageUrl: "./images/img Test.png", title: "Web Title 1", rating: 5 },
-  { imageUrl: "path/to/image2.jpg", title: "Web Title 2", rating: 3.5 },
-  { imageUrl: "path/to/image3.jpg", title: "Web Title 3", rating: 3 },
-  { imageUrl: "path/to/image4.jpg", title: "Web Title 4", rating: 4 },
-  { imageUrl: "path/to/image5.jpg", title: "Web Title 5", rating: 5 },
-  { imageUrl: "path/to/image6.jpg", title: "Web Title 6", rating: 3 },
-  { imageUrl: "path/to/image1.jpg", title: "Web Title 7", rating: 5 },
-  { imageUrl: "path/to/image2.jpg", title: "Web Title 8", rating: 4 },
-  { imageUrl: "path/to/image3.jpg", title: "Web Title 9", rating: 3 },
-  { imageUrl: "path/to/image4.jpg", title: "Web Title 10", rating: 4 },
-  { imageUrl: "path/to/image5.jpg", title: "Web Title 11", rating: 5 },
-  { imageUrl: "path/to/image6.jpg", title: "Web Title 12", rating: 3 },
-];
+  const webItems = [
+    { imageUrl: "./images/img Test.png", title: "Web Title 1", rating: 5 },
+    { imageUrl: "path/to/image2.jpg", title: "Web Title 2", rating: 3.5 },
+    { imageUrl: "path/to/image3.jpg", title: "Web Title 3", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Web Title 4", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Web Title 5", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Web Title 6", rating: 3 },
+    { imageUrl: "path/to/image1.jpg", title: "Web Title 7", rating: 5 },
+    { imageUrl: "path/to/image2.jpg", title: "Web Title 8", rating: 4 },
+    { imageUrl: "path/to/image3.jpg", title: "Web Title 9", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Web Title 10", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Web Title 11", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Web Title 12", rating: 3 },
+  ];
 
-// For Carousel New Movie Releases
-const movieItems = [
-  { imageUrl: "path/to/image2.jpg", title: "Movie Title 2", rating: 3.5 },
-  { imageUrl: "path/to/image3.jpg", title: "Movie Title 3", rating: 3 },
-  { imageUrl: "path/to/image4.jpg", title: "Movie Title 4", rating: 4 },
-  { imageUrl: "./images/img Test.png", title: "Movie Title 1", rating: 5 },
-  { imageUrl: "path/to/image5.jpg", title: "Movie Title 5", rating: 5 },
-  { imageUrl: "path/to/image6.jpg", title: "Movie Title 6", rating: 3 },
-  { imageUrl: "path/to/image1.jpg", title: "Movie Title 7", rating: 5 },
-  { imageUrl: "path/to/image2.jpg", title: "Movie Title 8", rating: 4 },
-  { imageUrl: "path/to/image3.jpg", title: "Movie Title 9", rating: 3 },
-  { imageUrl: "path/to/image4.jpg", title: "Movie Title 10", rating: 4 },
-  { imageUrl: "path/to/image5.jpg", title: "Movie Title 11", rating: 5 },
-  { imageUrl: "path/to/image6.jpg", title: "Movie Title 12", rating: 3 },
-];
+  // For Carousel New Movie Releases
+  const movieItems = [
+    { imageUrl: "path/to/image2.jpg", title: "Movie Title 2", rating: 3.5 },
+    { imageUrl: "path/to/image3.jpg", title: "Movie Title 3", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Movie Title 4", rating: 4 },
+    { imageUrl: "./images/img Test.png", title: "Movie Title 1", rating: 5 },
+    { imageUrl: "path/to/image5.jpg", title: "Movie Title 5", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Movie Title 6", rating: 3 },
+    { imageUrl: "path/to/image1.jpg", title: "Movie Title 7", rating: 5 },
+    { imageUrl: "path/to/image2.jpg", title: "Movie Title 8", rating: 4 },
+    { imageUrl: "path/to/image3.jpg", title: "Movie Title 9", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Movie Title 10", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Movie Title 11", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Movie Title 12", rating: 3 },
+  ];
 
-// For Carousel New Trailer Releases
-const trailerItems = [
-  { imageUrl: "path/to/image2.jpg", title: "Trailer Title 2", rating: 3.5 },
-  { imageUrl: "./images/img Test.png", title: "Trailer Title 1", rating: 5 },
-  { imageUrl: "path/to/image3.jpg", title: "Trailer Title 3", rating: 3 },
-  { imageUrl: "path/to/image4.jpg", title: "Trailer Title 4", rating: 4 },
-  { imageUrl: "path/to/image5.jpg", title: "Trailer Title 5", rating: 5 },
-  { imageUrl: "path/to/image6.jpg", title: "Trailer Title 6", rating: 3 },
-  { imageUrl: "path/to/image1.jpg", title: "Trailer Title 7", rating: 5 },
-  { imageUrl: "path/to/image2.jpg", title: "Trailer Title 8", rating: 4 },
-  { imageUrl: "path/to/image3.jpg", title: "Trailer Title 9", rating: 3 },
-  { imageUrl: "path/to/image4.jpg", title: "Trailer Title 10", rating: 4 },
-  { imageUrl: "path/to/image5.jpg", title: "Trailer Title 11", rating: 5 },
-  { imageUrl: "path/to/image6.jpg", title: "Trailer Title 12", rating: 3 },
-];
-
+  // For Carousel New Trailer Releases
+  const trailerItems = [
+    { imageUrl: "path/to/image2.jpg", title: "Trailer Title 2", rating: 3.5 },
+    { imageUrl: "./images/img Test.png", title: "Trailer Title 1", rating: 5 },
+    { imageUrl: "path/to/image3.jpg", title: "Trailer Title 3", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Trailer Title 4", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Trailer Title 5", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Trailer Title 6", rating: 3 },
+    { imageUrl: "path/to/image1.jpg", title: "Trailer Title 7", rating: 5 },
+    { imageUrl: "path/to/image2.jpg", title: "Trailer Title 8", rating: 4 },
+    { imageUrl: "path/to/image3.jpg", title: "Trailer Title 9", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Trailer Title 10", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Trailer Title 11", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Trailer Title 12", rating: 3 },
+  ];
 
   //For Catalogue Dropdown
-const movieDropdownData = [
-  { value: "Dangal", label: "Dangal" },
-  { value: "Lagaan", label: "Lagaan" },
-  { value: "3 Idiots", label: "3 Idiots" },
-  { value: "PK", label: "PK" },
-  { value: "Gully Boy", label: "Gully Boy" },
-];
+  const movieDropdownData = [
+    { value: "Dangal", label: "Dangal" },
+    { value: "Lagaan", label: "Lagaan" },
+    { value: "3 Idiots", label: "3 Idiots" },
+    { value: "PK", label: "PK" },
+    { value: "Gully Boy", label: "Gully Boy" },
+  ];
 
-
-  
   // For Year Dropdown
-const currentYear = new Date().getFullYear();
-const yearDropdownData = Array.from(
-  { length: currentYear - 1849 + 1 },
-  (_, index) => ({ value: (currentYear - index).toString(), label: (currentYear - index).toString() })
-);
+  const currentYear = new Date().getFullYear();
+  const yearDropdownData = Array.from(
+    { length: currentYear - 1849 + 1 },
+    (_, index) => ({
+      value: (currentYear - index).toString(),
+      label: (currentYear - index).toString(),
+    })
+  );
 
-// For Category Dropdown
-const categoryDropdownData = [
-  { value: "Action", label: "Action" },
-  { value: "Comedy", label: "Comedy" },
-  { value: "Drama", label: "Drama" },
-  { value: "Horror", label: "Horror" },
-  { value: "Romance", label: "Romance" },
-];
+  // For Category Dropdown
+  const categoryDropdownData = [
+    { value: "Action", label: "Action" },
+    { value: "Comedy", label: "Comedy" },
+    { value: "Drama", label: "Drama" },
+    { value: "Horror", label: "Horror" },
+    { value: "Romance", label: "Romance" },
+  ];
 
   // For Reviews Dropdown
-const reviewsDropdownData = [
-  { value: "5", label: "5 Stars" },
-  { value: "4", label: "4 Stars" },
-  { value: "3", label: "3 Stars" },
-  { value: "2", label: "2 Stars" },
-  { value: "1", label: "1 Star" },
-];
+  const reviewsDropdownData = [
+    { value: "5", label: "5 Stars" },
+    { value: "4", label: "4 Stars" },
+    { value: "3", label: "3 Stars" },
+    { value: "2", label: "2 Stars" },
+    { value: "1", label: "1 Star" },
+  ];
 
-// For Country Dropdown
-const countryDropdownData = [
-  { value: "India", label: "India" },
-  { value: "Japan", label: "Japan" },
-  { value: "America", label: "America" },
-  { value: "England", label: "England" },
-  { value: "Pakistan", label: "Pakistan" },
-];
+  // For Country Dropdown
+  const countryDropdownData = [
+    { value: "India", label: "India" },
+    { value: "Japan", label: "Japan" },
+    { value: "America", label: "America" },
+    { value: "England", label: "England" },
+    { value: "Pakistan", label: "Pakistan" },
+  ];
 
   return (
     <div className="homepage">
@@ -257,7 +259,20 @@ const countryDropdownData = [
             />
           </div>
           <div>
-          <IoSearchCircleOutline className="text-[50px] w-[40px]" />
+            <IoSearchCircleOutline className="text-[50px] w-[40px]" />
+          </div>
+        </div>
+        <div>
+          <MovieCatalogueCard item={trailerItems} />
+        </div>
+        <div className="flex flex-row justify-center">
+          <div>
+            <Pagination
+              total={85}
+              showSizeChanger
+              showQuickJumper
+              showTotal={(total) => `Total ${total} items`}
+            />
           </div>
         </div>
         <div>
