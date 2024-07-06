@@ -11,6 +11,7 @@ import FilterSelection from "../catalogue/FilterSelection";
 import { IoSearchCircleOutline } from "react-icons/io5";
 import { Pagination } from "antd";
 import MovieCatalogueCard from "../catalogue/MovieCatalogueCard.js";
+import HomepageTopCarousel from "../carousel/HomepageTopCarousel.js";
 
 function Header() {
   return (
@@ -155,52 +156,6 @@ function HomePage() {
     { imageUrl: "path/to/image6.jpg", title: "Trailer Title 12", rating: 3 },
   ];
 
-  //For Catalogue Dropdown
-  const movieDropdownData = [
-    { value: "Dangal", label: "Dangal" },
-    { value: "Lagaan", label: "Lagaan" },
-    { value: "3 Idiots", label: "3 Idiots" },
-    { value: "PK", label: "PK" },
-    { value: "Gully Boy", label: "Gully Boy" },
-  ];
-
-  // For Year Dropdown
-  const currentYear = new Date().getFullYear();
-  const yearDropdownData = Array.from(
-    { length: currentYear - 1849 + 1 },
-    (_, index) => ({
-      value: (currentYear - index).toString(),
-      label: (currentYear - index).toString(),
-    })
-  );
-
-  // For Category Dropdown
-  const categoryDropdownData = [
-    { value: "Action", label: "Action" },
-    { value: "Comedy", label: "Comedy" },
-    { value: "Drama", label: "Drama" },
-    { value: "Horror", label: "Horror" },
-    { value: "Romance", label: "Romance" },
-  ];
-
-  // For Reviews Dropdown
-  const reviewsDropdownData = [
-    { value: "5", label: "5 Stars" },
-    { value: "4", label: "4 Stars" },
-    { value: "3", label: "3 Stars" },
-    { value: "2", label: "2 Stars" },
-    { value: "1", label: "1 Star" },
-  ];
-
-  // For Country Dropdown
-  const countryDropdownData = [
-    { value: "India", label: "India" },
-    { value: "Japan", label: "Japan" },
-    { value: "America", label: "America" },
-    { value: "England", label: "England" },
-    { value: "Pakistan", label: "Pakistan" },
-  ];
-
   // For Catalogue
   const movieCatalogueItems = [
     {
@@ -247,7 +202,7 @@ function HomePage() {
       imageUrl: "path_to_image6.png",
       title: "Movie Title 6",
       rating: 3.9,
-      year: "2022",
+      year: "1980",
       genre: "Science Fiction",
       country: "Australia",
     },
@@ -270,7 +225,7 @@ function HomePage() {
     {
       imageUrl: "path_to_image9.png",
       title: "Movie Title 9",
-      rating: 4.3,
+      rating: 1.3,
       year: "2021",
       genre: "Animation",
       country: "South Korea",
@@ -278,7 +233,7 @@ function HomePage() {
     {
       imageUrl: "path_to_image10.png",
       title: "Movie Title 10",
-      rating: 3.6,
+      rating: 2.6,
       year: "2023",
       genre: "Action",
       country: "Mexico",
@@ -286,7 +241,7 @@ function HomePage() {
     {
       imageUrl: "path_to_image11.png",
       title: "Movie Title 11",
-      rating: 4.4,
+      rating: 2.4,
       year: "2022",
       genre: "Drama",
       country: "Spain",
@@ -302,14 +257,71 @@ function HomePage() {
     {
       imageUrl: "path_to_image13.png",
       title: "Movie Title 13",
-      rating: 4.0,
+      rating: 3.0,
       year: "2024",
       genre: "Romance",
       country: "Netherlands",
     },
   ];
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 11;
+
+  //For Catalogue Dropdown
+  const movieDropdownData = movieCatalogueItems.map((item) => ({
+    value: item.title,
+    label: item.title,
+  }));
+
+  // For Year Dropdown
+  // const currentYear = new Date().getFullYear();
+  // const yearDropdownData = Array.from(
+  //   { length: currentYear - 1849 + 1 },
+  //   (_, index) => ({
+  //     value: (currentYear - index).toString(),
+  //     label: (currentYear - index).toString(),
+  //   })
+  // );
+  const yearDropdownData = [
+    ...new Set(movieCatalogueItems.map((item) => item.year)),
+  ]
+    .sort((a, b) => b - a)
+    .map((year) => ({
+      value: year,
+      label: year,
+    }));
+
+  // For Category Dropdown
+  const categoryDropdownData = [
+    ...new Set(movieCatalogueItems.map((item) => item.genre)),
+  ]
+    .sort()
+    .map((genre) => ({
+      value: genre,
+      label: genre,
+    }));
+
+  // For Reviews Dropdown
+  const reviewsDropdownData = [
+    ...new Set(movieCatalogueItems.map((item) => Math.round(item.rating))),
+  ]
+    .sort((a, b) => b - a)
+    .map((rating) => ({
+      value: rating.toString(),
+      label: `${rating} Stars`,
+    }));
+
+  console.log(reviewsDropdownData);
+
+  // For Country Dropdown
+  const countryDropdownData = [
+    ...new Set(movieCatalogueItems.map((item) => item.country)),
+  ]
+    .sort()
+    .map((country) => ({
+      value: country,
+      label: country,
+    }));
 
   return (
     <div className="homepage">
@@ -317,10 +329,20 @@ function HomePage() {
       <FeaturedMovie />
       <div className="main-content">
         <RecommendedMovies />
-        <BestOf2024 />
       </div>
 
       <div className="flex flex-col p-20">
+        <div className="flex flex-row">
+          <div className="flex flex-col">
+            <div>
+              <HomepageTopCarousel />
+            </div>
+            <div>{/* // Recommended Movie */}</div>
+          </div>
+          <div>
+            <BestOf2024 />
+          </div>
+        </div>
         <div className="flex justify-center">
           <h2>Catalogue</h2>
         </div>
