@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
 import { FaStar, FaRegStar, FaStarHalf } from 'react-icons/fa';
+import imgA from '../../../images/img Test.png'
 
-const MovieCatalogueCard = ({ item }) => {
+const BestOf2024 = (props) => {
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 !== 0;
@@ -21,18 +22,27 @@ const MovieCatalogueCard = ({ item }) => {
   };
 
   return (
-    <div className="relative w-[100px] h-[200px] bg-cover bg-center flex items-end p-4 hover:scale-105 transform transition-transform duration-200" style={{ backgroundImage: `url(${item.imageUrl})` }}>
-      <div className="bg-black bg-opacity-50 p-2 rounded text-white">
-        <div className="text-lg font-semibold">{item.title}</div>
-        <div className="flex items-center">
-          {renderStars(item.rating)}
+    <div className="flex flex-rowmb-4">
+      <div>
+        {/* <img src={props.imageUrl} alt={props.title} className="w-24 h-24 object-cover" /> */}
+        <img src={imgA} alt={props.title} className="w-24 h-24 object-cover" />
+      </div>
+      <div className="flex flex-col ml-4">
+        <div>
+          <h1 className="text-xl font-bold">{props.title}</h1>
         </div>
-        <div className="text-sm">Year: {item.year}</div>
-        <div className="text-sm">Genre: {item.genre}</div>
-        <div className="text-sm">Country: {item.country}</div>
+        <div>
+          <p className="text-gray-500">{props.year}</p>
+        </div>
+        <div>
+          <p className="text-gray-500">{props.category}</p>
+        </div>
+        <div className="flex items-center">
+          {renderStars(props.rating)}
+        </div>
       </div>
     </div>
   );
 };
 
-export default MovieCatalogueCard;
+export default BestOf2024;

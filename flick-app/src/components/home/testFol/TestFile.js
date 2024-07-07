@@ -12,6 +12,9 @@ import { IoSearchCircleOutline } from "react-icons/io5";
 import { Pagination } from "antd";
 import MovieCatalogueCard from "../catalogue/MovieCatalogueCard.js";
 import HomepageTopCarousel from "../carousel/HomepageTopCarousel.js";
+import RecommendedMovies from "../recommendedMovies/RecommendedMovies.js";
+import imgA from "../carousel/images/img Test.png";
+import BestOf2024 from "../bestOf2024/BestOf2024.js";
 
 function Header() {
   return (
@@ -22,95 +25,132 @@ function Header() {
   );
 }
 
-function FeaturedMovie() {
-  return (
-    <div className="featured-movie">
-      <img src="featured-movie.jpg" alt="Featured Movie" />
-      <h2>Movie Title</h2>
-    </div>
-  );
-}
-
-function RecommendedMovies() {
-  const movies = ["Movie 1", "Movie 2", "Movie 3", "Movie 4", "Movie 5"];
-  return (
-    <div className="recommended-movies">
-      <h3>Recommended</h3>
-      <div className="movie-list">
-        {movies.map((movie, index) => (
-          <div className="movie-card" key={index}>
-            <img src={`${movie}.jpg`} alt={movie} />
-            <p>{movie}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function BestOf2024() {
-  const bestMovies = ["Movie A", "Movie B", "Movie C", "Movie D"];
-  return (
-    <div className="best-of-2024">
-      <h3>Best of 2024</h3>
-      {bestMovies.map((movie, index) => (
-        <div className="best-movie" key={index}>
-          <img src={`${movie}.jpg`} alt={movie} />
-          <p>{movie}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
+// function BestOf2024() {
+//   const bestMovies = ["Movie A", "Movie B", "Movie C", "Movie D"];
+//   return (
+//     <div className="best-of-2024">
+//       {bestMovies.map((movie, index) => (
+//         <div className="best-movie" key={index}>
+//           <img src={`${movie}.jpg`} alt={movie} />
+//           <p>{movie}</p>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
 
 function HomePage() {
-  const images = ["Image Location", "Image 2", "Image 3"];
-  const titles = ["Article Title", "AT 2", "AT 3"];
-  const byPersons = ["By This Person", "BTP 2", "BTP 3"];
-  const articleDescription = [
-    "Links to top social media platforms",
-    "Desc 2",
-    "Desc 3",
-  ];
-  const links = [
-    "https://www.facebook.com",
-    "https://www.twitter.com",
-    "https://www.instagram.com",
+  const weekTopArticlesData = [
+    {
+      imageUrl: "Image Location",
+      title: "Article Title",
+      byPerson: "By This Person",
+      description: "Links to top social media platforms",
+      link: "https://www.facebook.com",
+    },
+    {
+      imageUrl: "Image 2",
+      title: "AT 2",
+      byPerson: "BTP 2",
+      description: "Descrip 2",
+      link: "https://www.twitter.com",
+    },
+    {
+      imageUrl: "Image 3",
+      title: "AT 3",
+      byPerson: "BTP 3",
+      description: "Desc 3",
+      link: "https://www.instagram.com",
+    },
   ];
 
   // For Top Comments of This Week
-  const weekTopCommentUserImages = ["Image Location.jpg", "Image 2", "Image 3"];
-  const movieTitles = ["Movie Title", "MT 2", "MT 3"];
-  const movieYear = ["2024", "Year 2", "Year 3"];
-  const movieRatings = ["5", "4", "2"];
-  const criticName = ["Critic Name", "Name 2", "Name 3"];
-  const userComment = [
-    "Comment Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi numquam eum explicabo magnam quidem cumque laborum rerum commodi dicta vitae?",
-    "Comment 2",
-    "Comment 3",
-  ];
-
-  const seeMoreLinks = [
-    "https://www.facebook.com",
-    "https://www.twitter.com",
-    "https://www.instagram.com",
+  const weekTopCommentUserData = [
+    {
+      image: "Image Location.jpg",
+      movieTitle: "Movie Title",
+      movieYear: "2024",
+      movieRating: "5",
+      criticName: "Critic Name",
+      userComment:
+        "Comment Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi numquam eum explicabo magnam quidem cumque laborum rerum commodi dicta vitae?",
+      seeMoreLink: "https://www.facebook.com",
+    },
+    {
+      image: "Image 2",
+      movieTitle: "MT 2",
+      movieYear: "Year 2",
+      movieRating: "4",
+      criticName: "Name 2",
+      userComment: "Comment 2",
+      seeMoreLink: "https://www.twitter.com",
+    },
+    {
+      image: "Image 3",
+      movieTitle: "MT 3",
+      movieYear: "Year 3",
+      movieRating: "2",
+      criticName: "Name 3",
+      userComment: "Comment 3",
+      seeMoreLink: "https://www.instagram.com",
+    },
   ];
 
   // For Popular Reviewers
-  const criticNameReviewersPopular = ["Critic Name", "Name 2", "Name 3"];
-  const imageReviewersPopular = ["Critic Image Popular", "CI 2", "CI 3"];
-  const totalNumMoviesReviewersPopular = ["105", "5", "3"];
-  const totalNumReviewsPopular = ["999", "20", "50"];
+  const weekPopularReviewerData = [
+    {
+      criticName: "Critic Name",
+      image: "Critic Image Popular",
+      totalNumMovies: 105,
+      totalNumReviews: 999,
+    },
+    {
+      criticName: "Name 2",
+      image: "CI 2",
+      totalNumMovies: 5,
+      totalNumReviews: 20,
+    },
+    {
+      criticName: "Name 3",
+      image: "CI 3",
+      totalNumMovies: 3,
+      totalNumReviews: 50,
+    },
+  ];
 
   // For Top Reviewers of this Week
-  const criticNameReviewersTop = ["Critic Name", "Name 2", "Name 3"];
-  const imageReviewersTop = ["Critic Image Popular", "CI 2", "CI 3"];
-  const totalNumMoviesReviewersTop = ["1705", "65", "3"];
-  const totalNumReviewsTop = ["35", "236", "567"];
+  const weekTopReviewerData = [
+    {
+      criticName: "Critic Name",
+      image: "Critic Image Popular",
+      totalNumMovies: "1705",
+      totalNumReviews: "35",
+    },
+    {
+      criticName: "Name 2",
+      image: "CI 2",
+      totalNumMovies: "65",
+      totalNumReviews: "236",
+    },
+    {
+      criticName: "Name 3",
+      image: "CI 3",
+      totalNumMovies: "3",
+      totalNumReviews: "567",
+    },
+  ];
+
+  //d
+  // useEffect(() => {
+  //   const images = importAll(require.context('../assets/images', false, /\.(png|jpe?g|svg)$/));
+  //   // const imageItems = images.map((image, index) => ({ imageUrl: image.default, id: index }));
+  //   // setItems(imageItems);
+  // }, []);
 
   // For Carousel New Web Releases
   const webItems = [
-    { imageUrl: "./images/img Test.png", title: "Web Title 1", rating: 5 },
+    // { imageUrl: "./images/img Test.png", title: "Web Title 1", rating: 5 },
+    { imageUrl: imgA, title: "Web Title 1", rating: 5 },
     { imageUrl: "path/to/image2.jpg", title: "Web Title 2", rating: 3.5 },
     { imageUrl: "path/to/image3.jpg", title: "Web Title 3", rating: 3 },
     { imageUrl: "path/to/image4.jpg", title: "Web Title 4", rating: 4 },
@@ -165,6 +205,7 @@ function HomePage() {
       year: "2024",
       genre: "Drama",
       country: "India",
+      language: "Hindi",
     },
     {
       imageUrl: "path_to_image2.png",
@@ -173,6 +214,7 @@ function HomePage() {
       year: "2023",
       genre: "Action",
       country: "USA",
+      language: "English",
     },
     {
       imageUrl: "path_to_image3.png",
@@ -181,6 +223,7 @@ function HomePage() {
       year: "2022",
       genre: "Comedy",
       country: "UK",
+      language: "English",
     },
     {
       imageUrl: "path_to_image4.png",
@@ -189,6 +232,7 @@ function HomePage() {
       year: "2023",
       genre: "Romance",
       country: "France",
+      language: "French",
     },
     {
       imageUrl: "path_to_image5.png",
@@ -197,6 +241,7 @@ function HomePage() {
       year: "2021",
       genre: "Thriller",
       country: "Canada",
+      language: "English",
     },
     {
       imageUrl: "path_to_image6.png",
@@ -205,6 +250,7 @@ function HomePage() {
       year: "1980",
       genre: "Science Fiction",
       country: "Australia",
+      language: "English",
     },
     {
       imageUrl: "path_to_image7.png",
@@ -213,6 +259,7 @@ function HomePage() {
       year: "2023",
       genre: "Fantasy",
       country: "Brazil",
+      language: "Portuguese",
     },
     {
       imageUrl: "path_to_image8.png",
@@ -221,6 +268,7 @@ function HomePage() {
       year: "2022",
       genre: "Mystery",
       country: "Germany",
+      language: "German",
     },
     {
       imageUrl: "path_to_image9.png",
@@ -229,6 +277,7 @@ function HomePage() {
       year: "2021",
       genre: "Animation",
       country: "South Korea",
+      language: "Korean",
     },
     {
       imageUrl: "path_to_image10.png",
@@ -237,6 +286,7 @@ function HomePage() {
       year: "2023",
       genre: "Action",
       country: "Mexico",
+      language: "Spanish",
     },
     {
       imageUrl: "path_to_image11.png",
@@ -245,6 +295,7 @@ function HomePage() {
       year: "2022",
       genre: "Drama",
       country: "Spain",
+      language: "Spanish",
     },
     {
       imageUrl: "path_to_image12.png",
@@ -253,6 +304,7 @@ function HomePage() {
       year: "2021",
       genre: "Comedy",
       country: "Italy",
+      language: "Italian",
     },
     {
       imageUrl: "path_to_image13.png",
@@ -261,6 +313,7 @@ function HomePage() {
       year: "2024",
       genre: "Romance",
       country: "Netherlands",
+      language: "Dutch",
     },
   ];
 
@@ -323,29 +376,95 @@ function HomePage() {
       label: country,
     }));
 
+  // For Country Dropdown
+  const languageDropdownData = [
+    ...new Set(movieCatalogueItems.map((item) => item.language)),
+  ]
+    .sort()
+    .map((language) => ({
+      value: language,
+      label: language,
+    }));
+
+  //For Best Of 2024
+  const bestOf2024Data = [
+    {
+      imageUrl: "path_to_image1.png",
+      title: "Best Movie 1",
+      year: "2024",
+      category: "Drama",
+      rating: 4.5,
+    },
+    {
+      imageUrl: "path_to_image2.png",
+      title: "Best Movie 2",
+      year: "2024",
+      category: "Action",
+      rating: 4.0,
+    },
+    // Add more items as needed
+  ];
+
   return (
     <div className="homepage">
       <Header />
-      <FeaturedMovie />
-      <div className="main-content">
-        <RecommendedMovies />
-      </div>
 
-      <div className="flex flex-col p-20">
-        <div className="flex flex-row">
+      <div className="flex flex-col pl-20 pt-2 pr-5">
+        {/* <div className="flex flex-row">
           <div className="flex flex-col">
             <div>
               <HomepageTopCarousel />
             </div>
-            <div>{/* // Recommended Movie */}</div>
+            <div>
+            <RecommendedMovies />
+            </div>
           </div>
           <div>
             <BestOf2024 />
           </div>
+        </div> */}
+        <div className="flex flex-row gap-4">
+          <div className="flex flex-col w-2/3">
+            <div>
+              <HomepageTopCarousel />
+            </div>
+            <div>
+              <h2>Recommended</h2>
+            </div>
+            <div>
+              <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+            </div>
+            <div>
+              <Carousel items={trailerItems} />
+            </div>
+            {/* <RecommendedMovies /> */}
+          </div>
+          <div className="flex flex-col w-1/3">
+            <div>
+              <h2>Best of 2024</h2>
+            </div>
+            <div>
+              <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+            </div>
+            <div className="">
+              {bestOf2024Data.map((movie, index) => (
+                <BestOf2024
+                  key={index}
+                  imageUrl={movie.imageUrl}
+                  title={movie.title}
+                  year={movie.year}
+                  category={movie.category}
+                  rating={movie.rating}
+                />
+              ))}
+            </div>
+          </div>
         </div>
+
         <div className="flex justify-center">
           <h2>Catalogue</h2>
         </div>
+
         <div>
           <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
         </div>
@@ -353,7 +472,7 @@ function HomePage() {
           <div>
             <FilterSelection
               options={movieDropdownData}
-              filterWidth="285px"
+              filterWidth="180px"
               filterHeight="50px"
               placeholderData="Movie"
             />
@@ -369,7 +488,7 @@ function HomePage() {
           <div>
             <FilterSelection
               options={categoryDropdownData}
-              filterWidth="275px"
+              filterWidth="200px"
               filterHeight="50px"
               placeholderData="Category"
             />
@@ -385,9 +504,17 @@ function HomePage() {
           <div>
             <FilterSelection
               options={countryDropdownData}
-              filterWidth="260px"
+              filterWidth="200px"
               filterHeight="50px"
               placeholderData="Country"
+            />
+          </div>
+          <div>
+            <FilterSelection
+              options={languageDropdownData}
+              filterWidth="200px"
+              filterHeight="50px"
+              placeholderData="Language"
             />
           </div>
           <div>
@@ -460,18 +587,17 @@ function HomePage() {
         </div>
         <div className="flex flex-row justify-between">
           <div className="flex flex-col">
-            {userComment.map((userComment, index) => (
-              <div>
+            {weekTopCommentUserData.map((data, index) => (
+              <div key={index}>
                 <div>
                   <WeekTopCommentsCard
-                    key={index}
-                    weekTopCommentUserImages={weekTopCommentUserImages[index]}
-                    movieTitles={movieTitles[index]}
-                    movieYear={movieYear[index]}
-                    movieRatings={movieRatings[index]}
-                    criticName={criticName[index]}
-                    userComment={userComment[index]}
-                    seeMoreLinks={seeMoreLinks[index]}
+                    weekTopCommentUserImages={data.image}
+                    movieTitles={data.movieTitle}
+                    movieYear={data.movieYear}
+                    movieRatings={data.movieRating}
+                    criticName={data.criticName}
+                    userComment={data.userComment}
+                    seeMoreLinks={data.seeMoreLink}
                   />
                 </div>
                 <div>
@@ -480,34 +606,26 @@ function HomePage() {
               </div>
             ))}
           </div>
+
           <div className="flex flex-col">
             <div>
               <div>
                 <h1>Popular Reviewers</h1>
               </div>
               <div className="flex flex-col">
-                {criticNameReviewersPopular.map(
-                  (criticNameReviewersPopular, index) => (
-                    <div>
-                      <div>
-                        <WeekPopularReviewers
-                          key={index}
-                          criticNameReviewersPopular={
-                            criticNameReviewersPopular[index]
-                          }
-                          imageReviewersPopular={imageReviewersPopular[index]}
-                          totalNumMoviesReviewersPopular={
-                            totalNumMoviesReviewersPopular[index]
-                          }
-                          totalNumReviewsPopular={totalNumReviewsPopular[index]}
-                        />
-                      </div>
-                      <div>
-                        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
-                      </div>
-                    </div>
-                  )
-                )}
+                {weekPopularReviewerData.map((reviewerData, index) => (
+                  <div key={index}>
+                    <WeekPopularReviewers
+                      criticNameReviewersPopular={reviewerData.criticName}
+                      imageReviewersPopular={reviewerData.image}
+                      totalNumMoviesReviewersPopular={
+                        reviewerData.totalNumMovies
+                      }
+                      totalNumReviewsPopular={reviewerData.totalNumReviews}
+                    />
+                    <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="mt-9">
@@ -515,17 +633,14 @@ function HomePage() {
                 <h1>Top Reviewers of This Week</h1>
               </div>
               <div className="flex flex-col">
-                {criticNameReviewersTop.map((criticNameReviewersTop, index) => (
-                  <div>
+                {weekTopReviewerData.map((reviewer, index) => (
+                  <div key={index}>
                     <div>
                       <WeekTopReviewers
-                        key={index}
-                        criticNameReviewersTop={criticNameReviewersTop[index]}
-                        imageReviewersTop={imageReviewersTop[index]}
-                        totalNumMoviesReviewersTop={
-                          totalNumMoviesReviewersTop[index]
-                        }
-                        totalNumReviewsTop={totalNumReviewsTop[index]}
+                        criticNameReviewersTop={reviewer.criticName}
+                        imageReviewersTop={reviewer.image}
+                        totalNumMoviesReviewersTop={reviewer.totalNumMovies}
+                        totalNumReviewsTop={reviewer.totalNumReviews}
                       />
                     </div>
                     <div>
@@ -546,15 +661,16 @@ function HomePage() {
           <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
         </div>
         <div className="flex flex-row justify-between">
-          {titles.map((title, index) => (
-            <WeekTopArticlesCard
-              key={index}
-              image={images[index]}
-              title={title}
-              byPerson={byPersons[index]}
-              articleDescription={articleDescription[index]}
-              links={links[index]}
-            />
+          {weekTopArticlesData.map((article, index) => (
+            <div key={index}>
+              <WeekTopArticlesCard
+                image={article.imageUrl}
+                title={article.title}
+                byPerson={article.byPerson}
+                articleDescription={article.description}
+                links={article.link}
+              />
+            </div>
           ))}
         </div>
       </div>

@@ -23,8 +23,8 @@ function Home() {
         <div className="d-flex flex-row">
         {/* <MenuItems clicked={true}/> */}
         {/* <Navbar /> */}
-        <HomePage />
         {/* <HomepageTopCarousel /> */}
+        <HomePage />
         {/* <Footer /> */}
         {/* <MenuItemsOption /> */}
 

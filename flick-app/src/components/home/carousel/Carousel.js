@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { FaRegStar, FaStar, FaStarHalf } from "react-icons/fa";
 import imgA from './images/img Test.png';
 
+console.log("IMAGE URL: ",imgA);
 const Carousel = ({items}) => {
   const productRef = useRef(null);
   const boxRef = useRef(null);
@@ -89,6 +90,7 @@ const Carousel = ({items}) => {
             className="min-w-[300px] flex-shrink-0 box-border rounded-lg shadow-lg transform transition duration-300 ease-in-out hover:scale-105 relative z-0"
             style={{
               backgroundImage: `url(${item.imageUrl})`,
+              // backgroundImage: `url(${imgA})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
