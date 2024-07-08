@@ -4,7 +4,7 @@
 /flick-app/node_modules
 /.pnp
 .pnp.js
-/flick-app/node_modules
+/Flick_backend/node_modules
 
 # testing
 /coverage

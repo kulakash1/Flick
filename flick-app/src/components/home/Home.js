@@ -8,6 +8,7 @@ import HomePage from './testFol/TestFile.js'
 import MenuItemsOption from '../menuItems/MenuItemsOption.js'
 import Footer from './footer/Footer.js'
 import HomepageTopCarousel from './carousel/HomepageTopCarousel.js'
+import Sample from '../../Sample.js'
 
 function Home() {
 
@@ -24,7 +25,8 @@ function Home() {
         {/* <MenuItems clicked={true}/> */}
         {/* <Navbar /> */}
         {/* <HomepageTopCarousel /> */}
-        <HomePage />
+        {/* <HomePage /> */}
+        <Sample />
         {/* <Footer /> */}
         {/* <MenuItemsOption /> */}
 
