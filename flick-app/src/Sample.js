@@ -4,9 +4,20 @@ const Sample = () => {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/movies/upcoming')
-            .then(response => response.json())
-            .then(data => setMovies(data.results)) // Accessing results directly
+        fetch('http://localhost:3001/api/movies/popular')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data && data.data && data.data.list && Array.isArray(data.data.list)) {
+                    setMovies(data.data.list); // Assuming 'list' contains the array of movies
+                } else {
+                    console.error('Invalid data format:', data);
+                }
+            })
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
@@ -14,12 +25,14 @@ const Sample = () => {
 
     return (
         <div>
-            <h1>Upcoming Movies</h1>
+            <h1>Popular Movies</h1>
             <ul>
                 {movies.map((movie, index) => (
                     <li key={index}>
-                        <h2>{movie.titleText.text}</h2>
-                        <img src={movie.primaryImage.url} alt={movie.titleText.text} width="200" />
+                        <h2>{movie.title.originalTitleText.text}</h2>
+                        <img src={movie.title.primaryImage.imageUrl} alt={movie.title.originalTitleText.text} width="200" />
+                        <p>Release Year: {movie.title.releaseYear.year}</p>
+                        <p>Rating: {movie.title.ratingsSummary.aggregateRating}</p>
                     </li>
                 ))}
             </ul>
