@@ -4,6 +4,8 @@ import imgA from './images/img Test.png';
 
 console.log("IMAGE URL: ",imgA);
 const Carousel = ({items}) => {
+
+  // console.log("Items",items);
   const productRef = useRef(null);
   const boxRef = useRef(null);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);

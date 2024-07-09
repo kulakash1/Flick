@@ -25,8 +25,8 @@ function Home() {
         {/* <MenuItems clicked={true}/> */}
         {/* <Navbar /> */}
         {/* <HomepageTopCarousel /> */}
-        {/* <HomePage /> */}
-        <Sample />
+        <HomePage />
+        {/* <Sample /> */}
         {/* <Footer /> */}
         {/* <MenuItemsOption /> */}
 

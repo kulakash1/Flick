@@ -100,19 +100,50 @@ export const weekTopArticlesData = [
   ];
   
   // For Web Items
-  export const webItems = [
-    { imageUrl: "path/to/image2.jpg", title: "Web Title 2", rating: 3.5 },
-    { imageUrl: "path/to/image3.jpg", title: "Web Title 3", rating: 3 },
-    { imageUrl: "path/to/image4.jpg", title: "Web Title 4", rating: 4 },
-    { imageUrl: "path/to/image5.jpg", title: "Web Title 5", rating: 5 },
-    { imageUrl: "path/to/image6.jpg", title: "Web Title 6", rating: 3 },
-    { imageUrl: "path/to/image1.jpg", title: "Web Title 7", rating: 5 },
-    { imageUrl: "path/to/image2.jpg", title: "Web Title 8", rating: 4 },
-    { imageUrl: "path/to/image3.jpg", title: "Web Title 9", rating: 3 },
-    { imageUrl: "path/to/image4.jpg", title: "Web Title 10", rating: 4 },
-    { imageUrl: "path/to/image5.jpg", title: "Web Title 11", rating: 5 },
-    { imageUrl: "path/to/image6.jpg", title: "Web Title 12", rating: 3 },
-  ];
+  // export const webItems = [
+  //   { imageUrl: "path/to/image2.jpg", title: "Web Title 2", rating: 3.5 },
+  //   { imageUrl: "path/to/image3.jpg", title: "Web Title 3", rating: 3 },
+  //   { imageUrl: "path/to/image4.jpg", title: "Web Title 4", rating: 4 },
+  //   { imageUrl: "path/to/image5.jpg", title: "Web Title 5", rating: 5 },
+  //   { imageUrl: "path/to/image6.jpg", title: "Web Title 6", rating: 3 },
+  //   { imageUrl: "path/to/image1.jpg", title: "Web Title 7", rating: 5 },
+  //   { imageUrl: "path/to/image2.jpg", title: "Web Title 8", rating: 4 },
+  //   { imageUrl: "path/to/image3.jpg", title: "Web Title 9", rating: 3 },
+  //   { imageUrl: "path/to/image4.jpg", title: "Web Title 10", rating: 4 },
+  //   { imageUrl: "path/to/image5.jpg", title: "Web Title 11", rating: 5 },
+  //   { imageUrl: "path/to/image6.jpg", title: "Web Title 12", rating: 3 },
+  // ];
+  let movies = [];
+  export const webItems = [];
+  
+  fetch('http://localhost:3001/api/movies/popular')
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => {
+          if (data && data.data && data.data.list && Array.isArray(data.data.list)) {
+              movies = data.data.list;
+              for (let index = 0; index < movies.length; index++) {
+                  const movie = movies[index];
+                  const element = {
+                      imageUrl: movie.title?.primaryImage?.imageUrl || "",
+                      title: movie.title?.originalTitleText?.text || "",
+                      rating: movie.title?.ratingsSummary?.aggregateRating || 0
+                  };
+                  webItems.push(element);
+              }
+          } else {
+              console.error('Invalid data format:', data);
+          }
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  
+
+  // export const webItems = [];
+
   
   // For Movie Items
   export const movieItems = [
