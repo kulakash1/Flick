@@ -20,7 +20,8 @@ import { webItemsLoaderData } from "./components/home/data/Data.js";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="" element={<HomePage />} loader={webItemsLoaderData}/>
+      {/* <Route path="" element={<HomePage />} loader={webItemsLoaderData}/> */}
+      <Route path="" element={<HomePage />} />
       <Route path="contact-us" element={<Contact />} />
       <Route path="about-us" element={<About />} />
       <Route path="profile" element={<Profile />} />

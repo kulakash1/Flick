@@ -106,102 +106,88 @@ export const weekTopArticlesData = [
   ];
   
   // For Web Items
-  // export const webItems = [
-  //   { imageUrl: "path/to/image2.jpg", title: "Web Title 2", rating: 3.5 },
-  //   { imageUrl: "path/to/image3.jpg", title: "Web Title 3", rating: 3 },
-  //   { imageUrl: "path/to/image4.jpg", title: "Web Title 4", rating: 4 },
-  //   { imageUrl: "path/to/image5.jpg", title: "Web Title 5", rating: 5 },
-  //   { imageUrl: "path/to/image6.jpg", title: "Web Title 6", rating: 3 },
-  //   { imageUrl: "path/to/image1.jpg", title: "Web Title 7", rating: 5 },
-  //   { imageUrl: "path/to/image2.jpg", title: "Web Title 8", rating: 4 },
-  //   { imageUrl: "path/to/image3.jpg", title: "Web Title 9", rating: 3 },
-  //   { imageUrl: "path/to/image4.jpg", title: "Web Title 10", rating: 4 },
-  //   { imageUrl: "path/to/image5.jpg", title: "Web Title 11", rating: 5 },
-  //   { imageUrl: "path/to/image6.jpg", title: "Web Title 12", rating: 3 },
-  // ];
-const TestNew = () => {
-  const dataTest = useLoaderData();
-  console.log(dataTest);
-}
-export default TestNew;
-  export const webItemsLoaderData = async() => {
-    const response = await fetch('http://localhost:3001/api/movies/popular');
-    const webItemsData = await response.json();
-    // .then(response => {
-    //     if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //     }
-    //     return response.json();
-    // })
-    // .then(data => {
-    //     if (data && data.data && data.data.list && Array.isArray(data.data.list)) {
-    //         movies = data.data.list;
-    //         for (let index = 0; index < movies.length; index++) {
-    //             const movie = movies[index];
-    //             const element = {
-    //                 imageUrl: movie.title?.primaryImage?.imageUrl || "",
-    //                 title: movie.title?.originalTitleText?.text || "",
-    //                 rating: movie.title?.ratingsSummary?.aggregateRating || 0
-    //             };
-    //             webItems.push(element);
-    //         }
-    //     } else {
-    //         console.error('Invalid data format:', data);
-    //     }
-    // })
-    // .catch(error => console.error('Error fetching data:', error));
-
-    return webItemsData;
-  }
-  
-  let movies = [];
-  export const webItems = [];
-  
-  fetch('http://localhost:3001/api/movies/popular')
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-          return response.json();
-      })
-      .then(data => {
-          if (data && data.data && data.data.list && Array.isArray(data.data.list)) {
-              movies = data.data.list;
-              for (let index = 0; index < movies.length; index++) {
-                  const movie = movies[index];
-                  const element = {
-                      imageUrl: movie.title?.primaryImage?.imageUrl || "",
-                      title: movie.title?.originalTitleText?.text || "",
-                      rating: movie.title?.ratingsSummary?.aggregateRating || 0
-                  };
-                  webItems.push(element);
-              }
-          } else {
-              console.error('Invalid data format:', data);
-          }
-      })
-      .catch(error => console.error('Error fetching data:', error));
-  
-
-  // export const webItems = [];
-
-  
-  // For Movie Items
-  export const movieItems = [
-    { imageUrl: "path/to/image2.jpg", title: "Movie Title 2", rating: 3.5 },
-    { imageUrl: "path/to/image3.jpg", title: "Movie Title 3", rating: 3 },
-    { imageUrl: "path/to/image4.jpg", title: "Movie Title 4", rating: 4 },
-    { imageUrl: "path/to/image1.jpg", title: "Movie Title 1", rating: 5 },
-    { imageUrl: "path/to/image5.jpg", title: "Movie Title 5", rating: 5 },
-    { imageUrl: "path/to/image6.jpg", title: "Movie Title 6", rating: 3 },
-    { imageUrl: "path/to/image1.jpg", title: "Movie Title 7", rating: 5 },
-    { imageUrl: "path/to/image2.jpg", title: "Movie Title 8", rating: 4 },
-    { imageUrl: "path/to/image3.jpg", title: "Movie Title 9", rating: 3 },
-    { imageUrl: "path/to/image4.jpg", title: "Movie Title 10", rating: 4 },
-    { imageUrl: "path/to/image5.jpg", title: "Movie Title 11", rating: 5 },
-    { imageUrl: "path/to/image6.jpg", title: "Movie Title 12", rating: 3 },
+  export const webItems = [
+    { imageUrl: "path/to/image2.jpg", title: "Web Title 2", rating: 3.5 },
+    { imageUrl: "path/to/image3.jpg", title: "Web Title 3", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Web Title 4", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Web Title 5", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Web Title 6", rating: 3 },
+    { imageUrl: "path/to/image1.jpg", title: "Web Title 7", rating: 5 },
+    { imageUrl: "path/to/image2.jpg", title: "Web Title 8", rating: 4 },
+    { imageUrl: "path/to/image3.jpg", title: "Web Title 9", rating: 3 },
+    { imageUrl: "path/to/image4.jpg", title: "Web Title 10", rating: 4 },
+    { imageUrl: "path/to/image5.jpg", title: "Web Title 11", rating: 5 },
+    { imageUrl: "path/to/image6.jpg", title: "Web Title 12", rating: 3 },
   ];
-  
+// const TestNew = () => {
+//   const dataTest = useLoaderData();
+//   console.log(dataTest);
+// }
+// export default TestNew;
+//   export const webItemsLoaderData = async() => {
+//     const response = await fetch('http://localhost:3001/api/movies/popular');
+//     const webItemsData = await response.json();
+//     // .then(response => {
+//     //     if (!response.ok) {
+//     //         throw new Error('Network response was not ok');
+//     //     }
+//     //     return response.json();
+//     // })
+//     // .then(data => {
+//     //     if (data && data.data && data.data.list && Array.isArray(data.data.list)) {
+//     //         movies = data.data.list;
+//     //         for (let index = 0; index < movies.length; index++) {
+//     //             const movie = movies[index];
+//     //             const element = {
+//     //                 imageUrl: movie.title?.primaryImage?.imageUrl || "",
+//     //                 title: movie.title?.originalTitleText?.text || "",
+//     //                 rating: movie.title?.ratingsSummary?.aggregateRating || 0
+//     //             };
+//     //             webItems.push(element);
+//     //         }
+//     //     } else {
+//     //         console.error('Invalid data format:', data);
+//     //     }
+//     // })
+//     // .catch(error => console.error('Error fetching data:', error));
+
+//     return webItemsData;
+//   }
+
+let movieItems = [];
+
+async function fetchMovies() {
+    try {
+        const response = await fetch('http://localhost:3001/api/movies/list');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        // console.log('Fetched data:', data);  // Log the data to check its structure
+        if (data && Array.isArray(data.results)) {
+            const movies = data.results;
+            movieItems = movies.map(movie => ({
+                title: movie.title || "",
+                language: movie.original_language || "",
+                country: movie.original_language || "",
+                release_date: movie.release_date || "",
+                overview: movie.overview || "",
+                // imageUrl: `https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}` || "",
+                imageUrl: movie.poster_path || "",
+                rating: movie.vote_average || 0
+            }));
+        } else {
+            console.error('Invalid data format:', data);
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+// Fetch movies and populate movieItems before exporting
+await fetchMovies();
+export { movieItems };
+
   // For Trailer Items
   export const trailerItems = [
     { imageUrl: "path/to/image2.jpg", title: "Trailer Title 2", rating: 3.5 },
@@ -217,127 +203,238 @@ export default TestNew;
     { imageUrl: "path/to/image6.jpg", title: "Trailer Title 12", rating: 3 },
   ];
   
-  // For Movie Catalogue Items
-  export const movieCatalogueItems =  [
-    {
-      imageUrl: "path_to_image1.png",
-      title: "Movie Title 1",
-      rating: 3.5,
-      year: "2024",
-      genre: "Drama",
-      country: "India",
-      language: "Hindi",
-    },
-    {
-      imageUrl: "path_to_image2.png",
-      title: "Movie Title 2",
-      rating: 4.0,
-      year: "2023",
-      genre: "Action",
-      country: "USA",
-      language: "English",
-    },
-    {
-      imageUrl: "path_to_image3.png",
-      title: "Movie Title 3",
-      rating: 4.2,
-      year: "2022",
-      genre: "Comedy",
-      country: "UK",
-      language: "English",
-    },
-    {
-      imageUrl: "path_to_image4.png",
-      title: "Movie Title 4",
-      rating: 3.8,
-      year: "2023",
-      genre: "Romance",
-      country: "France",
-      language: "French",
-    },
-    {
-      imageUrl: "path_to_image5.png",
-      title: "Movie Title 5",
-      rating: 4.5,
-      year: "2021",
-      genre: "Thriller",
-      country: "Canada",
-      language: "English",
-    },
-    {
-      imageUrl: "path_to_image6.png",
-      title: "Movie Title 6",
-      rating: 3.9,
-      year: "1980",
-      genre: "Science Fiction",
-      country: "Australia",
-      language: "English",
-    },
-    {
-      imageUrl: "path_to_image7.png",
-      title: "Movie Title 7",
-      rating: 4.1,
-      year: "2023",
-      genre: "Fantasy",
-      country: "Brazil",
-      language: "Portuguese",
-    },
-    {
-      imageUrl: "path_to_image8.png",
-      title: "Movie Title 8",
-      rating: 3.7,
-      year: "2022",
-      genre: "Mystery",
-      country: "Germany",
-      language: "German",
-    },
-    {
-      imageUrl: "path_to_image9.png",
-      title: "Movie Title 9",
-      rating: 1.3,
-      year: "2021",
-      genre: "Animation",
-      country: "South Korea",
-      language: "Korean",
-    },
-    {
-      imageUrl: "path_to_image10.png",
-      title: "Movie Title 10",
-      rating: 2.6,
-      year: "2023",
-      genre: "Action",
-      country: "Mexico",
-      language: "Spanish",
-    },
-    {
-      imageUrl: "path_to_image11.png",
-      title: "Movie Title 11",
-      rating: 2.4,
-      year: "2022",
-      genre: "Drama",
-      country: "Spain",
-      language: "Spanish",
-    },
-    {
-      imageUrl: "path_to_image12.png",
-      title: "Movie Title 12",
-      rating: 3.8,
-      year: "2021",
-      genre: "Comedy",
-      country: "Italy",
-      language: "Italian",
-    },
-    {
-      imageUrl: "path_to_image13.png",
-      title: "Movie Title 13",
-      rating: 3.0,
-      year: "2024",
-      genre: "Romance",
-      country: "Netherlands",
-      language: "Dutch",
-    },
-  ];
+  // // For Movie Catalogue Items
+  // export const movieCatalogueItems =  [
+  //   {
+  //     imageUrl: "path_to_image1.png",
+  //     title: "Movie Title 1",
+  //     rating: 3.5,
+  //     year: "2024",
+  //     genre: "Drama",
+  //     country: "India",
+  //     language: "Hindi",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image2.png",
+  //     title: "Movie Title 2",
+  //     rating: 4.0,
+  //     year: "2023",
+  //     genre: "Action",
+  //     country: "USA",
+  //     language: "English",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image3.png",
+  //     title: "Movie Title 3",
+  //     rating: 4.2,
+  //     year: "2022",
+  //     genre: "Comedy",
+  //     country: "UK",
+  //     language: "English",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image4.png",
+  //     title: "Movie Title 4",
+  //     rating: 3.8,
+  //     year: "2023",
+  //     genre: "Romance",
+  //     country: "France",
+  //     language: "French",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image5.png",
+  //     title: "Movie Title 5",
+  //     rating: 4.5,
+  //     year: "2021",
+  //     genre: "Thriller",
+  //     country: "Canada",
+  //     language: "English",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image6.png",
+  //     title: "Movie Title 6",
+  //     rating: 3.9,
+  //     year: "1980",
+  //     genre: "Science Fiction",
+  //     country: "Australia",
+  //     language: "English",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image7.png",
+  //     title: "Movie Title 7",
+  //     rating: 4.1,
+  //     year: "2023",
+  //     genre: "Fantasy",
+  //     country: "Brazil",
+  //     language: "Portuguese",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image8.png",
+  //     title: "Movie Title 8",
+  //     rating: 3.7,
+  //     year: "2022",
+  //     genre: "Mystery",
+  //     country: "Germany",
+  //     language: "German",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image9.png",
+  //     title: "Movie Title 9",
+  //     rating: 1.3,
+  //     year: "2021",
+  //     genre: "Animation",
+  //     country: "South Korea",
+  //     language: "Korean",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image10.png",
+  //     title: "Movie Title 10",
+  //     rating: 2.6,
+  //     year: "2023",
+  //     genre: "Action",
+  //     country: "Mexico",
+  //     language: "Spanish",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image11.png",
+  //     title: "Movie Title 11",
+  //     rating: 2.4,
+  //     year: "2022",
+  //     genre: "Drama",
+  //     country: "Spain",
+  //     language: "Spanish",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image12.png",
+  //     title: "Movie Title 12",
+  //     rating: 3.8,
+  //     year: "2021",
+  //     genre: "Comedy",
+  //     country: "Italy",
+  //     language: "Italian",
+  //   },
+  //   {
+  //     imageUrl: "path_to_image13.png",
+  //     title: "Movie Title 13",
+  //     rating: 3.0,
+  //     year: "2024",
+  //     genre: "Romance",
+  //     country: "Netherlands",
+  //     language: "Dutch",
+  //   },
+  // ];
   
+// Function to extract year from release_date
+function getReleaseYear(dateString) {
+  return dateString ? (new Date(dateString)).getFullYear() : "";
+}
+
+// async function fetchMoviesCatalogue() {
+//   try {
+//       // Check if movieItems array exists and is not empty
+//       if (movieItems && movieItems.length > 0) {
+//           // Map movieItems to movieCatalogueItems
+//           movieCatalogueItems = movieItems.map(movie => ({
+//               title: movie.title || "",
+//               language: movie.original_language || "",
+//               country: movie.original_language || "",
+//               release_year: getReleaseYear(movie.release_date),
+//               overview: movie.overview || "",
+//               imageUrl: movie.poster_path || "",
+//               rating: movie.vote_average || 0
+//           }));
+//       } else {
+//           console.error('Invalid data format:', movieItems);
+//       }
+//   } catch (error) {
+//       console.error('Error fetching data:', error);
+//   }
+// }
+
+// // Immediately invoke the async function to populate movieCatalogueItems
+// (async () => {
+//   await fetchMoviesCatalogue();
+//   // Export movieCatalogueItems after it has been populated
+//   export { movieCatalogueItems };
+// })();
+
+let movieCatalogueItems = [];
+
+//   async function fetchMoviesCatalogue() {
+//           // Check if movieItems array exists and is not empty
+//       if (movieItems && movieItems.length > 0) {
+//             movieCatalogueItems = movieItems.map(movie => ({
+//               title: movie.title || "",
+//               language: movie.original_language || "",
+//               country: movie.original_language || "",
+//               release_year: getReleaseYear(movie.release_date),
+//               overview: movie.overview || "",
+//               imageUrl: movie.poster_path || "",
+//               rating: movie.vote_average || 0
+//           }));
+//           } else {
+//               console.error('Invalid data format:', movieItems);
+//           }
+//   }
+  
+//   // Fetch movies and populate movieCatalogueItems before exporting
+//   await fetchMoviesCatalogue();
+//   export { movieCatalogueItems };
+
+if (movieItems && movieItems.length > 0) {
+  movieCatalogueItems = movieItems.map(movie => ({
+      title: movie.title || "",
+      language: movie.language || "",
+      country: movie.language || "",
+      year: getReleaseYear(movie.release_date),
+      overview: movie.overview || "",
+      imageUrl: movie.imageUrl || "",
+      rating: movie.rating || 0
+  }));
+} else {
+  console.error('Invalid data format:', movieItems);
+}
+
+export { movieCatalogueItems };
+
+
+  // let movieCatalogueItems = [];
+
+  // async function fetchMoviesCatalogue() {
+  //     try {
+  //         const response = await fetch('http://localhost:3001/api/movies/list');
+  //         if (!response.ok) {
+  //             throw new Error('Network response was not ok');
+  //         }
+  //         const data = await response.json();
+  //         // console.log('Fetched data:', data);  // Log the data to check its structure
+  //         if (data && Array.isArray(data.results)) {
+  //           const movies = data.results;
+  //           movieCatalogueItems = movies.map(movie => ({
+  //             title: movie.title || "",
+  //             language: movie.original_language || "",
+  //             country: movie.original_language || "",
+  //             release_year: movie.release_date ? (new Date(movie.release_date)).getFullYear() : "",  // Extract year from release_date
+  //             overview: movie.overview || "",
+  //             // imageUrl: `https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}` || "",
+  //             imageUrl: movie.poster_path || "",
+  //             rating: movie.vote_average || 0
+  //           }));
+  //           // console.log('Fetched data:', movieCatalogueItems);  // Log the data to check its structure
+  //         } else {
+  //             console.error('Invalid data format:', data);
+  //         }
+  //     } catch (error) {
+  //         console.error('Error fetching data:', error);
+  //     }
+  // }
+  
+  // // Fetch movies and populate movieCatalogueItems before exporting
+  // await fetchMoviesCatalogue();
+  // export { movieCatalogueItems };
+  
+
+
   // For Year Dropdown Data
   export const yearDropdownData = [
     ...new Set(movieCatalogueItems.map((item) => item.year)),

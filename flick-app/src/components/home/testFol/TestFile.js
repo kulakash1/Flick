@@ -16,7 +16,8 @@ import RecommendedMovies from "../recommendedMovies/RecommendedMovies.js";
 import imgA from "../carousel/images/img Test.png";
 import BestOf2024 from "../bestOf2024/BestOf2024.js";
 
-import TestNew, { bestOf2024Data, movieDropdownData, yearDropdownData, categoryDropdownData, reviewsDropdownData, countryDropdownData, languageDropdownData, movieCatalogueItems, trailerItems, movieItems, webItems, weekPopularReviewerData, weekTopArticlesData, weekTopReviewerData, weekTopCommentUserData, webItemsLoaderData } from '../data/Data'; // Adjust the path as needed
+import TestNew, { bestOf2024Data, movieDropdownData, yearDropdownData, categoryDropdownData, reviewsDropdownData, countryDropdownData, languageDropdownData, movieCatalogueItems, trailerItems, movieItems, webItems, weekPopularReviewerData, weekTopArticlesData, weekTopReviewerData, weekTopCommentUserData } from '../data/Data'; // Adjust the path as needed
+import TestCOmponent from "../test/TestCOmponent.js";
 
 function Header() {
   return (
@@ -47,7 +48,7 @@ function HomePage() {
 
   return (
     <div className="homepage">
-      <Header />
+      {/* <Header /> */}
 
       <div className="flex flex-col pl-20 pt-2 pr-5">
         {/* <div className="flex flex-row">
@@ -75,7 +76,7 @@ function HomePage() {
               <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
             </div>
             <div>
-              <Carousel items={trailerItems} />
+              {/* <Carousel items={trailerItems} /> */}
             </div>
             {/* <RecommendedMovies /> */}
           </div>
@@ -126,12 +127,12 @@ function HomePage() {
             />
           </div>
           <div>
-            <FilterSelection
+            {/* <FilterSelection
               options={categoryDropdownData}
               filterWidth="200px"
               filterHeight="50px"
               placeholderData="Category"
-            />
+            /> */}
           </div>
           <div>
             <FilterSelection
@@ -142,12 +143,12 @@ function HomePage() {
             />
           </div>
           <div>
-            <FilterSelection
+            {/* <FilterSelection
               options={countryDropdownData}
               filterWidth="200px"
               filterHeight="50px"
               placeholderData="Country"
-            />
+            /> */}
           </div>
           <div>
             <FilterSelection
@@ -167,6 +168,7 @@ function HomePage() {
             .map((item, index) => (
               <div key={index} className="w-1/4 p-4">
                 <MovieCatalogueCard item={item} />
+          {/* <TestCOmponent items={item} /> */}
               </div>
             ))}
         </div>
@@ -197,7 +199,7 @@ function HomePage() {
           <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
         </div>
         <div>
-          <Carousel items={trailerItems} />
+          {/* <Carousel items={trailerItems} /> */}
         </div>
         <div>
           <h2>New Movie Releases</h2>
@@ -218,7 +220,7 @@ function HomePage() {
         <div>
           <Carousel items={webItems} />
           {/* <TestNew /> */}
-          <Carousel items={webItemsLoaderData} />
+          {/* <Carousel items={webItemsLoaderData} /> */}
         </div>
 
         <div>
@@ -317,7 +319,7 @@ function HomePage() {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

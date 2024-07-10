@@ -2,10 +2,10 @@ import React, { useRef, useState, useEffect } from 'react';
 import { FaRegStar, FaStar, FaStarHalf } from "react-icons/fa";
 import imgA from './images/img Test.png';
 
-console.log("IMAGE URL: ",imgA);
+// console.log("IMAGE URL: ",imgA);
 const Carousel = ({items}) => {
 
-  console.log("Items",items);
+  // console.log("Items",items);
   const productRef = useRef(null);
   const boxRef = useRef(null);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
@@ -89,7 +89,7 @@ const Carousel = ({items}) => {
           <div
             key={index}
             ref={index === 0 ? productRef : null}
-            className="min-w-[300px] flex-shrink-0 box-border rounded-lg shadow-lg transform transition duration-300 ease-in-out hover:scale-105 relative z-0"
+            className="min-w-[220px] min-h-[330px] flex-shrink-0 box-border rounded-lg shadow-lg transform transition duration-300 ease-in-out hover:scale-105 relative z-0"
             style={{
               backgroundImage: `url(${item.imageUrl})`,
               // backgroundImage: `url(${imgA})`,
@@ -97,7 +97,7 @@ const Carousel = ({items}) => {
               backgroundPosition: 'center'
             }}
           >
-            <div className="rounded-lg overflow-hidden text-white bg-gradient-to-b from-transparent to-black h-64 relative z-0">
+            <div className="rounded-lg overflow-hidden text-white bg-gradient-to-b from-transparent to-black h-full relative z-0">
               <div className="p-4 flex flex-col justify-end h-full relative z-0">
                 <h3 className="text-lg font-bold">{item.title}</h3>
                 <div className="flex items-center mt-2">
