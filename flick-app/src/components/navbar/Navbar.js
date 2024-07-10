@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import SearchInput from './searchInput/SearchInput';
+import { Link } from 'react-router-dom';
 // import logoImg from '../../image/AppLogo.png'
 
 function Navbar() {
@@ -28,7 +29,21 @@ function Navbar() {
             
                     {/* <li>Home</li>
                     <li>Cart</li> */}
-                    <li>Profile</li>
+                    <li>
+                      <Link to='/profile'>Profile</Link>
+                      </li>
+                    <li>
+                      <Link to='/profile/settings'>Profile Se</Link>
+                      </li>
+                    <li>
+                      <Link to=''>Home</Link>
+                      </li>
+                    <li>
+                      <Link to='/contact-us'>Contact Us</Link>
+                      </li>
+                    <li>
+                      <Link to='/about-us'>About Us</Link>
+                      </li>
                     <button>LogOut</button>
                 </ul> 
         </div>

@@ -16,7 +16,7 @@ import RecommendedMovies from "../recommendedMovies/RecommendedMovies.js";
 import imgA from "../carousel/images/img Test.png";
 import BestOf2024 from "../bestOf2024/BestOf2024.js";
 
-import { bestOf2024Data, movieDropdownData, yearDropdownData, categoryDropdownData, reviewsDropdownData, countryDropdownData, languageDropdownData, movieCatalogueItems, trailerItems, movieItems, webItems, weekPopularReviewerData, weekTopArticlesData, weekTopReviewerData, weekTopCommentUserData } from '../data/Data'; // Adjust the path as needed
+import TestNew, { bestOf2024Data, movieDropdownData, yearDropdownData, categoryDropdownData, reviewsDropdownData, countryDropdownData, languageDropdownData, movieCatalogueItems, trailerItems, movieItems, webItems, weekPopularReviewerData, weekTopArticlesData, weekTopReviewerData, weekTopCommentUserData, webItemsLoaderData } from '../data/Data'; // Adjust the path as needed
 
 function Header() {
   return (
@@ -217,6 +217,8 @@ function HomePage() {
         </div>
         <div>
           <Carousel items={webItems} />
+          {/* <TestNew /> */}
+          <Carousel items={webItemsLoaderData} />
         </div>
 
         <div>

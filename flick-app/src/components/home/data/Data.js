@@ -1,3 +1,9 @@
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useLoaderData,
+} from "react-router-dom";
+
 // For Week Top Articles Data
 export const weekTopArticlesData = [
     {
@@ -113,6 +119,41 @@ export const weekTopArticlesData = [
   //   { imageUrl: "path/to/image5.jpg", title: "Web Title 11", rating: 5 },
   //   { imageUrl: "path/to/image6.jpg", title: "Web Title 12", rating: 3 },
   // ];
+const TestNew = () => {
+  const dataTest = useLoaderData();
+  console.log(dataTest);
+}
+export default TestNew;
+  export const webItemsLoaderData = async() => {
+    const response = await fetch('http://localhost:3001/api/movies/popular');
+    const webItemsData = await response.json();
+    // .then(response => {
+    //     if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //     }
+    //     return response.json();
+    // })
+    // .then(data => {
+    //     if (data && data.data && data.data.list && Array.isArray(data.data.list)) {
+    //         movies = data.data.list;
+    //         for (let index = 0; index < movies.length; index++) {
+    //             const movie = movies[index];
+    //             const element = {
+    //                 imageUrl: movie.title?.primaryImage?.imageUrl || "",
+    //                 title: movie.title?.originalTitleText?.text || "",
+    //                 rating: movie.title?.ratingsSummary?.aggregateRating || 0
+    //             };
+    //             webItems.push(element);
+    //         }
+    //     } else {
+    //         console.error('Invalid data format:', data);
+    //     }
+    // })
+    // .catch(error => console.error('Error fetching data:', error));
+
+    return webItemsData;
+  }
+  
   let movies = [];
   export const webItems = [];
   

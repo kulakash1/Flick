@@ -9,6 +9,14 @@ import MenuItemsOption from '../menuItems/MenuItemsOption.js'
 import Footer from './footer/Footer.js'
 import HomepageTopCarousel from './carousel/HomepageTopCarousel.js'
 import Sample from '../../Sample.js'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useLoaderData,
+} from "react-router-dom";
+
+
+
 
 function Home() {
 
@@ -23,9 +31,9 @@ function Home() {
         <div className=' bg-[#352D39] h-cover'>
         <div className="d-flex flex-row">
         {/* <MenuItems clicked={true}/> */}
-        {/* <Navbar /> */}
+        <Navbar />
         {/* <HomepageTopCarousel /> */}
-        <HomePage />
+        {/* <HomePage /> */}
         {/* <Sample /> */}
         {/* <Footer /> */}
         {/* <MenuItemsOption /> */}
