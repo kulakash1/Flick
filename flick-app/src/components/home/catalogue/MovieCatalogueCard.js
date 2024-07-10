@@ -21,8 +21,8 @@ const MovieCatalogueCard = ({ item }) => {
   };
 
   return (
-    <div className="relative w-[100px] h-[200px] bg-cover bg-center flex items-end p-4 hover:scale-105 transform transition-transform duration-200" style={{ backgroundImage: `url(${item.imageUrl})` }}>
-      <div className="bg-black bg-opacity-50 p-2 rounded text-white">
+    <div className="relative m-2 w-[220px] h-[330px] bg-cover bg-center flex items-end hover:scale-105 transform transition-transform duration-200" style={{ backgroundImage: `url(${item.imageUrl})` }}>
+      <div className="bg-black bg-opacity-50 p-2 rounded text-white w-full">
         <div className="text-lg font-semibold">{item.title}</div>
         <div className="flex items-center">
           {renderStars(item.rating)}

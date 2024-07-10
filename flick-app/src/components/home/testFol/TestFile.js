@@ -166,7 +166,7 @@ function HomePage() {
           {movieCatalogueItems
             .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
             .map((item, index) => (
-              <div key={index} className="w-1/4 p-4">
+              <div key={index} className="w-1/4">
                 <MovieCatalogueCard item={item} />
           {/* <TestCOmponent items={item} /> */}
               </div>
@@ -199,7 +199,7 @@ function HomePage() {
           <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
         </div>
         <div>
-          {/* <Carousel items={trailerItems} /> */}
+          <Carousel items={trailerItems} />
         </div>
         <div>
           <h2>New Movie Releases</h2>
