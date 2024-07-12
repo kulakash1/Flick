@@ -1,6 +1,6 @@
-const fetchMovies = async () => {
-    const fetch = await import('node-fetch').then(module => module.default);
+// const fetch = require('node-fetch');
 
+const fetchMovies = async () => {
     const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=en-US&page=6&sort_by=popularity.desc';
     const options = {
         method: 'GET',
