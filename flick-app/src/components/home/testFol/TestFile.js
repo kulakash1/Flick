@@ -235,7 +235,8 @@ function HomePage() {
               <div key={index}>
                 <div>
                   <WeekTopCommentsCard
-                    weekTopCommentUserImages={data.image}
+                    weekTopCommentUserImages={data.profileImage}
+                    weekTopCommentMoovieImages={data.movieImage}
                     movieTitles={data.movieTitle}
                     movieYear={data.movieYear}
                     movieRatings={data.movieRating}

@@ -39,6 +39,9 @@ function Navbar() {
                       <Link to=''>Home</Link>
                       </li>
                     <li>
+                      <Link to='/user-comments'>UserComments</Link>
+                      </li>
+                    <li>
                       <Link to='/contact-us'>Contact Us</Link>
                       </li>
                     <li>

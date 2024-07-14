@@ -6,7 +6,7 @@ export const WeekTopCommentsCard = (props) => {
     <div className="hover:scale-105 transform transition-transform duration-200">
       <div className="flex flex-row">
         <div>
-          <img src="flex.jpg" alt="Top Comments Image" />
+          <img src={props.weekTopCommentMoovieImages} alt="Top Comments" className="w-[150px] h-full" />
         </div>
         <div className="flex flex-col">
           <div>
@@ -17,7 +17,7 @@ export const WeekTopCommentsCard = (props) => {
           </div>
           <div className="flex flex-row">
             <div>
-              <img src={props.weekTopCommentUserImages} alt="Circle Image" />
+              <img src={props.weekTopCommentUserImages} alt="Circle" className="w-[60px] h-10 rounded-full" />
             </div>
             <div>
               <p>{props.criticName}</p>

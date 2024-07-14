@@ -29,38 +29,77 @@ export const weekTopArticlesData = [
     },
   ];
   
-  // For Week Top Comment User Data
-  export const weekTopCommentUserData = [
-    {
-      image: "Image Location.jpg",
-      movieTitle: "Movie Title",
-      movieYear: "2024",
-      movieRating: "5",
-      criticName: "Critic Name",
-      userComment:
-        "Comment Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi numquam eum explicabo magnam quidem cumque laborum rerum commodi dicta vitae?",
-      seeMoreLink: "https://www.facebook.com",
-    },
-    {
-      image: "Image 2",
-      movieTitle: "MT 2",
-      movieYear: "Year 2",
-      movieRating: "4",
-      criticName: "Name 2",
-      userComment: "Comment 2",
-      seeMoreLink: "https://www.twitter.com",
-    },
-    {
-      image: "Image 3",
-      movieTitle: "MT 3",
-      movieYear: "Year 3",
-      movieRating: "2",
-      criticName: "Name 3",
-      userComment: "Comment 3",
-      seeMoreLink: "https://www.instagram.com",
-    },
-  ];
+  // // For Week Top Comment User Data
+  // export const weekTopCommentUserData = [
+  //   {
+  //     image: "Image Location.jpg",
+  //     movieTitle: "Movie Title",
+  //     movieYear: "2024",
+  //     movieRating: "5",
+  //     criticName: "Critic Name",
+  //     userComment:
+  //       "Comment Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi numquam eum explicabo magnam quidem cumque laborum rerum commodi dicta vitae?",
+  //     seeMoreLink: "https://www.facebook.com",
+  //   },
+  //   {
+  //     image: "Image 2",
+  //     movieTitle: "MT 2",
+  //     movieYear: "Year 2",
+  //     movieRating: "4",
+  //     criticName: "Name 2",
+  //     userComment: "Comment 2",
+  //     seeMoreLink: "https://www.twitter.com",
+  //   },
+  //   {
+  //     image: "Image 3",
+  //     movieTitle: "MT 3",
+  //     movieYear: "Year 3",
+  //     movieRating: "2",
+  //     criticName: "Name 3",
+  //     userComment: "Comment 3",
+  //     seeMoreLink: "https://www.instagram.com",
+  //   },
+  // ];
   
+  let weekTopCommentUserData = [];
+
+async function fetchUserComments() {
+    try {
+        const response = await fetch('http://localhost:3001/api/users/commentlist');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('Before Fetched data:', data);  // Log the data to check its structure
+        
+        if (data && Array.isArray(data)) {
+            weekTopCommentUserData = data.map(listItem => ({
+                movieImage: listItem.movieImage || "",
+                profileImage: listItem.profileImage || "",
+                movieTitle: listItem.movieTitle || "",
+                movieYear: listItem.movieYear || "",
+                movieRating: listItem.movieRatings || 0,
+                criticName: listItem.criticName || "",
+                userComment: listItem.userComment || "",
+                seeMoreLink: listItem.seeMoreLink || ""
+            }));
+        } else {
+            console.error('Invalid data format:', data);
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+    
+    // Fetch movies and populate movieItems before exporting
+    await fetchUserComments();
+    console.log('After Fetched data:', weekTopCommentUserData);  // Log the data to check its structure
+    export { weekTopCommentUserData };
+
+
+
+
+
   // For Week Popular Reviewer Data
   export const weekPopularReviewerData = [
     {
@@ -185,7 +224,7 @@ async function fetchMovies() {
 }
 
 // Fetch movies and populate movieItems before exporting
-await fetchMovies();
+// await fetchMovies();
 export { movieItems };
 
   // For Trailer Items

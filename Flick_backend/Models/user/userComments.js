@@ -1,40 +1,44 @@
-const sequelize = require('sequelize');
-const Sequelize = require('../../Utils/database.js');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../../Utils/database.js');
 
-const userCommentSchema = Sequelize.define("userComment", {
+const UserComment = sequelize.define("UserComment", {
     commentId: {
-        type: sequelize.DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
     },
     criticName: {
-        type: sequelize.DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: true
     },
     profileImage: {
-        type: sequelize.DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: true
     },
     movieTitle: {
-        type: sequelize.DataTypes.STRING,
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    movieImage: {
+        type: DataTypes.STRING,
         allowNull: true
     },
     movieYear: {
-        type: sequelize.DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: true
     },
     movieRatings: {
-        type: sequelize.DataTypes.FLOAT,
+        type: DataTypes.FLOAT,
         allowNull: true
     },
     userComment: {
-        type: sequelize.DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: true
     },
     seeMoreLink: {
-        type: sequelize.DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: true
     }
 });
 
-module.exports = userCommentSchema;
+module.exports = UserComment;

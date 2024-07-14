@@ -16,5 +16,6 @@ app.use(cors())
 
 // app.use(userRoute);
 app.use(movieRoute);
+app.use(userCommentsRoute);
 
 module.exports = app;

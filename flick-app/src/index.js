@@ -16,6 +16,7 @@ import Settings from "./components/profile/settings/Settings.js";
 import HomePage from "./components/home/testFol/TestFile.js";
 import App from "./App.js";
 import { webItemsLoaderData } from "./components/home/data/Data.js";
+import UserComments from "./components/userComments/UserComments.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       {/* <Route path="" element={<HomePage />} loader={webItemsLoaderData}/> */}
       <Route path="" element={<HomePage />} />
       <Route path="contact-us" element={<Contact />} />
+      <Route path="user-comments" element={<UserComments />} />
       <Route path="about-us" element={<About />} />
       <Route path="profile" element={<Profile />} />
       <Route path="profile/settings" element={<Settings />} />
