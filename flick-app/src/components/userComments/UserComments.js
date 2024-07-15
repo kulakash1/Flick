@@ -103,7 +103,7 @@ const UserComments = () => {
                         value={formData.commentId}
                         onChange={handleInputChange}
                         placeholder="Comment ID"
-                        className="border p-2"
+                        className="border p-2 text-black"
                         required
                     />
                     <input
@@ -112,7 +112,7 @@ const UserComments = () => {
                         value={formData.criticName}
                         onChange={handleInputChange}
                         placeholder="Critic Name"
-                        className="border p-2"
+                        className="border p-2 text-black"
                     />
                     <input
                         type="text"
@@ -120,7 +120,7 @@ const UserComments = () => {
                         value={formData.profileImage}
                         onChange={handleInputChange}
                         placeholder="Profile Image"
-                        className="border p-2"
+                        className="border p-2 text-black"
                     />
                     <input
                         type="text"
@@ -128,7 +128,7 @@ const UserComments = () => {
                         value={formData.movieTitle}
                         onChange={handleInputChange}
                         placeholder="Movie Title"
-                        className="border p-2"
+                        className="border p-2 text-black"
                     />
                     <input
                         type="text"
@@ -136,7 +136,7 @@ const UserComments = () => {
                         value={formData.movieImage}
                         onChange={handleInputChange}
                         placeholder="Movie Image"
-                        className="border p-2"
+                        className="border p-2 text-black"
                     />
                     <input
                         type="text"
@@ -144,7 +144,7 @@ const UserComments = () => {
                         value={formData.movieYear}
                         onChange={handleInputChange}
                         placeholder="Movie Year"
-                        className="border p-2"
+                        className="border p-2 text-black"
                     />
                     <input
                         type="text"
@@ -152,14 +152,14 @@ const UserComments = () => {
                         value={formData.movieRatings}
                         onChange={handleInputChange}
                         placeholder="Movie Ratings"
-                        className="border p-2"
+                        className="border p-2 text-black"
                     />
                     <textarea
                         name="userComment"
                         value={formData.userComment}
                         onChange={handleInputChange}
                         placeholder="User Comment"
-                        className="border p-2"
+                        className="border p-2 text-black"
                     ></textarea>
                     <input
                         type="text"
@@ -167,7 +167,7 @@ const UserComments = () => {
                         value={formData.seeMoreLink}
                         onChange={handleInputChange}
                         placeholder="See More Link"
-                        className="border p-2"
+                        className="border p-2 text-black"
                     />
                     <button type="submit" className="mt-4 bg-blue-500 text-white p-2 w-full">
                         {editMode ? 'Update Comment' : 'Add Comment'}
