@@ -32,22 +32,22 @@ function AdminNavbar() {
           </div>
           <ul className="hidden md:flex gap-10 text-white">
             <li className="mb-2">
-              <Link to="/dashboard" className="text-gray-300 hover:text-white">
+              <Link to="/admin/dashboard" className="text-gray-300 hover:text-white">
                 Dashboard
               </Link>
             </li>
             <li className="mb-2">
-              <Link to="/users" className="text-gray-300 hover:text-white">
+              <Link to="/admin/users" className="text-gray-300 hover:text-white">
                 Users
               </Link>
             </li>
             <li className="mb-2">
-              <Link to="/movies" className="text-gray-300 hover:text-white">
+              <Link to="/admin/movies" className="text-gray-300 hover:text-white">
                 Movies
               </Link>
             </li>
             <li className="mb-2">
-              <Link to="/reviews" className="text-gray-300 hover:text-white">
+              <Link to="/admin/reviews" className="text-gray-300 hover:text-white">
                 Reviews
               </Link>
             </li>

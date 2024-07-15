@@ -20,22 +20,25 @@ import UserComments from "./components/userComments/UserComments.js";
 import { Layout } from "antd";
 import Dashboard from "./pages/users/dashboard/Dashboard.js";
 import AdminLayout from "./layouts/admin/AdminLayout.js";
+import Users from "./pages/users/users/Users.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      {/* <Route path="" element={<HomePage />} loader={webItemsLoaderData}/> */}
-      <Route path="" element={<HomePage />} />
-      <Route path="contact-us" element={<Contact />} />
-      <Route path="user-comments" element={<UserComments />} />
-      <Route path="about-us" element={<About />} />
-      <Route path="profile" element={<Profile />} />
-      <Route path="profile/settings" element={<Settings />} />
-      <Route exact path="/admin" component={Dashboard} element={<AdminLayout />}>
-        {/* <Route path="" element={<HomePage />} />
+    <Route>
+      <Route path="/" element={<App />}>
+        <Route path="" element={<HomePage />} />
         <Route path="contact-us" element={<Contact />} />
         <Route path="user-comments" element={<UserComments />} />
         <Route path="about-us" element={<About />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="profile/settings" element={<Settings />} />
+      </Route>
+      {/* <Route path="" element={<HomePage />} loader={webItemsLoaderData}/> */}
+      <Route exact path="admin" component={Dashboard} element={<AdminLayout />}>
+        <Route path="users" element={<Users />} />
+        {/* <Route path="movies" element={<Movies />} /> */}
+        <Route path="dashboard" element={<Dashboard />} />
+        {/* <Route path="about-us" element={<About />} />
         <Route path="profile" element={<Profile />} />
         <Route path="profile/settings" element={<Settings />} /> */}
       </Route>
