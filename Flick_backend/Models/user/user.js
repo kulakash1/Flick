@@ -28,6 +28,10 @@ const userSchema = Sequelize.define("user", {
         type: sequelize.DataTypes.STRING,
         allowNull: false
     },
+    confirmPassword: {
+        type: sequelize.DataTypes.STRING,
+        allowNull: false
+    },
     profileImage: {
         type: sequelize.DataTypes.STRING,
         allowNull: true
