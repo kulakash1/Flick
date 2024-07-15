@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaSortAlphaDown, FaSortAlphaUp } from 'react-icons/fa';
 
 const UserComments = () => {
     const [comments, setComments] = useState([]);
@@ -17,6 +17,9 @@ const UserComments = () => {
     });
     const [searchTerm, setSearchTerm] = useState('');
     const [editMode, setEditMode] = useState(false);
+    const [sortOrder, setSortOrder] = useState('asc');
+    const [currentPage, setCurrentPage] = useState(1);
+    const commentsPerPage = 5;
 
     useEffect(() => {
         fetchComments();
@@ -79,22 +82,42 @@ const UserComments = () => {
         }
     };
 
+    const handleSort = () => {
+        const sortedComments = [...comments].sort((a, b) => {
+            const nameA = a.criticName.toLowerCase();
+            const nameB = b.criticName.toLowerCase();
+            if (sortOrder === 'asc') {
+                return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+            } else {
+                return nameA > nameB ? -1 : nameA < nameB ? 1 : 0;
+            }
+        });
+        setComments(sortedComments);
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    };
+
     const filteredComments = comments.filter(comment =>
         comment.criticName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         comment.movieTitle.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    const indexOfLastComment = currentPage * commentsPerPage;
+    const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+    const currentComments = filteredComments.slice(indexOfFirstComment, indexOfLastComment);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-3xl font-bold mb-6 text-center">User Comments</h1>
-            
+
             <div className="mb-8">
                 <input
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search by critic name or movie title"
-                    className="border p-2 w-full mb-4"
+                    className="border p-2 w-full mb-4 text-black"
                 />
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input
@@ -175,9 +198,15 @@ const UserComments = () => {
                 </form>
             </div>
 
+            <div className="mb-4 flex justify-end">
+                <button onClick={handleSort} className="bg-gray-500 text-white p-2 rounded flex items-center">
+                    Sort by Critic Name {sortOrder === 'asc' ? <FaSortAlphaDown className="ml-2" /> : <FaSortAlphaUp className="ml-2" />}
+                </button>
+            </div>
+
             <div>
-                {filteredComments.map(comment => (
-                    <div key={comment.commentId} className="border p-4 mb-4 rounded-lg shadow-md">
+                {currentComments.map(comment => (
+                    <div key={comment.commentId} className="border p-4 mb-4 rounded-lg shadow-md bg-gray-100">
                         <div className="flex items-center justify-between">
                             <h2 className="text-xl font-bold">{comment.criticName}</h2>
                             <div className="flex space-x-2">
@@ -218,6 +247,23 @@ const UserComments = () => {
                         </a>
                     </div>
                 ))}
+            </div>
+
+            <div className="flex justify-center mt-4">
+                <button
+                    onClick={() => paginate(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="bg-gray-500 text-white p-2 rounded mx-2"
+                >
+                    Previous
+                </button>
+                <button
+                    onClick={() => paginate(currentPage + 1)}
+                    disabled={indexOfLastComment >= filteredComments.length}
+                    className="bg-gray-500 text-white p-2 rounded mx-2"
+                >
+                    Next
+                </button>
             </div>
         </div>
     );

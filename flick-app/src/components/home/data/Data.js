@@ -224,7 +224,7 @@ async function fetchMovies() {
 }
 
 // Fetch movies and populate movieItems before exporting
-// await fetchMovies();
+await fetchMovies();
 export { movieItems };
 
   // For Trailer Items
