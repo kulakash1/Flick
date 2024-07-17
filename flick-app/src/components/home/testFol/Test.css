@@ -1,29 +1,29 @@
-/* App.css */
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #1c1c1e;
-    color: #fff;
+    /* background-color: #1c1c1e; */
+    /* color: #fff; */
     margin: 0;
     padding: 0;
   }
   
-  .header {
+  /* .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: #2c2c2c;
   }
-  
-  .search-bar {
+   */
+  /* .search-bar {
     width: 60%;
     padding: 10px;
     border-radius: 5px;
     border: none;
     outline: none;
   }
-  
-  .login-button {
+   */
+  /* .login-button {
     background-color: #e50914;
     color: white;
     border: none;
@@ -31,71 +31,4 @@ body {
     border-radius: 5px;
     cursor: pointer;
   }
-  
-  .featured-movie {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  .featured-movie img {
-    width: 80%;
-    border-radius: 10px;
-  }
-  
-  .recommended-movies, .best-of-2024, .catalogue, .recent-trailers, .new-movie-releases, .new-web-releases, .top-comments, .popular-reviewers, .top-reviewers, .top-articles {
-    margin: 20px;
-  }
-  
-  .recommended-movies h3, .best-of-2024 h3, .catalogue h3, .recent-trailers h3, .new-movie-releases h3, .new-web-releases h3, .top-comments h3, .popular-reviewers h3, .top-reviewers h3, .top-articles h3 {
-    border-bottom: 2px solid #444;
-    padding-bottom: 10px;
-  }
-  
-  .movie-list, .trailer-list, .article-list {
-    display: flex;
-    overflow-x: auto;
-    padding: 10px 0;
-  }
-  
-  .movie-card, .trailer-card, .article-card, .comment-card, .reviewer-card {
-    background-color: #444;
-    padding: 15px;
-    margin: 0 10px;
-    border-radius: 5px;
-    min-width: 200px;
-    max-width: 200px;
-    text-align: center;
-    transition: transform 0.2s;
-  }
-  
-  .movie-card:hover, .trailer-card:hover, .article-card:hover, .comment-card:hover, .reviewer-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .movie-card img, .trailer-card img, .article-card img {
-    width: 100%;
-    border-radius: 5px;
-  }
-  
-  .footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    background-color: #2c2c2c;
-    color: white;
-    padding: 20px;
-  }
-  
-  .footer-section {
-    margin: 10px;
-  }
-  
-  .footer-section h4 {
-    border-bottom: 1px solid #444;
-    padding-bottom: 10px;
-  }
-  
-  .footer-section p {
-    margin: 5px 0;
-  }
-  
+   */

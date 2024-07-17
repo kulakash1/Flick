@@ -7,6 +7,7 @@ const movieApiController = require('../Controllers/movie.js');
 
 // router.post('/api/movies/list', validateUser,validate,userController.signup)
 router.get('/api/movies/list', movieApiController.movieList)
+router.get('/api/movies/popularlist', movieApiController.popularMovieList)
 // router.post('/login', userController.login)
 // router.post('/verify-email', userController.verifyEmail)
 // router.post('/forgot-password', userController.forgotPassword)

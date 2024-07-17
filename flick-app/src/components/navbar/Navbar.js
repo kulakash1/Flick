@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function Navbar() {
     const [menuToggle, setMenuToggle] = useState(false);
   return (
-    <div>
+    <div className='bg-[#1c1c1e] text-[#fff]'>
       {/* Navbar Start */}
       <div>
         {/* <div className="bg-[#f7931e] h-10 items-center flex justify-between p-4"> */}

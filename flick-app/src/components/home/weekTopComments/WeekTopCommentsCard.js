@@ -3,7 +3,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 
 export const WeekTopCommentsCard = (props) => {
   return (
-    <div className="hover:scale-105 transform transition-transform duration-200">
+    <div className="c">
       <div className="flex flex-row">
         <div>
           <img src={props.weekTopCommentMoovieImages} alt="Top Comments" className="w-[150px] h-full" />

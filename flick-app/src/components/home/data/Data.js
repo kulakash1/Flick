@@ -517,30 +517,69 @@ export const languageDropdownData = [
     label: language,
   }));
 
-// For Best of 2024 Data
-export const bestOf2024Data = [
-  {
-    imageUrl: "path_to_image1.png",
-    title: "Best Movie 1",
-    year: "2024",
-    category: "Drama",
-    rating: 4.5,
-  },
-  {
-    imageUrl: "path_to_image2.png",
-    title: "Best Movie 2",
-    year: "2024",
-    category: "Action",
-    rating: 4.0,
-  },
-  {
-    imageUrl: "path_to_image3.png",
-    title: "Best Movie 3",
-    year: "2024",
-    category: "Comedy",
-    rating: 4.2,
-  },
-];
+// // For Best of 2024 Data
+// export const bestOf2024Data = [
+//   {
+//     imageUrl: "path_to_image1.png",
+//     title: "Best Movie 1",
+//     year: "2024",
+//     category: "Drama",
+//     rating: 4.5,
+//   },
+//   {
+//     imageUrl: "path_to_image2.png",
+//     title: "Best Movie 2",
+//     year: "2024",
+//     category: "Action",
+//     rating: 4.0,
+//   },
+//   {
+//     imageUrl: "path_to_image3.png",
+//     title: "Best Movie 3",
+//     year: "2024",
+//     category: "Comedy",
+//     rating: 4.2,
+//   },
+// ];
+
+let bestOf2024Data;
+let popularMovieItems = [];
+
+async function fetchPopularMovies() {
+  try {
+    const response = await fetch("http://localhost:3001/api/movies/popularlist");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    // console.log('Fetched Popular data:', data);  // Log the data to check its structure
+    if (data && Array.isArray(data.results)) {
+      const movies = data.results;
+      popularMovieItems = movies.map((movie) => ({
+        imageUrl: movie.poster_path || "",
+        title: movie.title || "",
+        year: getReleaseYear(movie.release_date) || "",
+        rating: movie.vote_average || 0,
+        category: movie.original_language || "",
+        // language: movie.original_language || "",
+        // country: movie.original_language || "",
+        // overview: movie.overview || "",
+        // imageUrl: `https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}` || "",
+      }));
+    } else {
+      console.error("Invalid data format:", data);
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+// Fetch movies and populate movieItems before exporting
+await fetchPopularMovies();
+bestOf2024Data = popularMovieItems;
+// export { popularMovieItems };
+export { bestOf2024Data };
+
 
 // For Movie Dropdown Data
 export const movieDropdownData = movieCatalogueItems.map((item) => ({

@@ -108,7 +108,7 @@ const UserComments = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container p-4 bg-[#1c1c1e] text-[#fff]">
             <h1 className="text-3xl font-bold mb-6 text-center">User Comments</h1>
 
             <div className="mb-8">
@@ -208,7 +208,7 @@ const UserComments = () => {
                 {currentComments.map(comment => (
                     <div key={comment.commentId} className="border p-4 mb-4 rounded-lg shadow-md bg-gray-100">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-xl font-bold">{comment.criticName}</h2>
+                            <h2 className="text-xl font-bold text-black">{comment.criticName}</h2>
                             <div className="flex space-x-2">
                                 <button
                                     onClick={() => handleEdit(comment)}
@@ -229,14 +229,14 @@ const UserComments = () => {
                             alt={`${comment.criticName}'s profile`}
                             className="w-16 h-16 rounded-full mt-2"
                         />
-                        <h3 className="text-lg mt-4">{comment.movieTitle} ({comment.movieYear})</h3>
+                        <h3 className="text-lg mt-4 text-black">{comment.movieTitle} ({comment.movieYear})</h3>
                         <img
                             src={comment.movieImage}
                             alt={comment.movieTitle}
                             className="w-32 h-48 mt-2"
                         />
-                        <p className="mt-2">Rating: {comment.movieRatings}</p>
-                        <p className="mt-2">{comment.userComment}</p>
+                        <p className="mt-2 text-black">Rating: {comment.movieRatings}</p>
+                        <p className="mt-2 text-black">{comment.userComment}</p>
                         <a
                             href={comment.seeMoreLink}
                             target="_blank"

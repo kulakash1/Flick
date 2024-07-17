@@ -13,7 +13,6 @@ import { Pagination } from "antd";
 import MovieCatalogueCard from "../catalogue/MovieCatalogueCard.js";
 import HomepageTopCarousel from "../carousel/HomepageTopCarousel.js";
 import RecommendedMovies from "../recommendedMovies/RecommendedMovies.js";
-import imgA from "../carousel/images/img Test.png";
 import BestOf2024 from "../bestOf2024/BestOf2024.js";
 
 import TestNew, { bestOf2024Data, movieDropdownData, yearDropdownData, categoryDropdownData, reviewsDropdownData, countryDropdownData, languageDropdownData, movieCatalogueItems, trailerItems, movieItems, webItems, weekPopularReviewerData, weekTopArticlesData, weekTopReviewerData, weekTopCommentUserData } from '../data/Data'; // Adjust the path as needed
@@ -28,26 +27,12 @@ function Header() {
   );
 }
 
-// function BestOf2024() {
-//   const bestMovies = ["Movie A", "Movie B", "Movie C", "Movie D"];
-//   return (
-//     <div className="best-of-2024">
-//       {bestMovies.map((movie, index) => (
-//         <div className="best-movie" key={index}>
-//           <img src={`${movie}.jpg`} alt={movie} />
-//           <p>{movie}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
 function HomePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 11;
 
   return (
-    <div className="homepage">
+    <div className="homepage bg-[#1c1c1e] text-[#fff]">
       {/* <Header /> */}
 
       <div className="flex flex-col pl-20 pt-2 pr-5">
@@ -76,7 +61,7 @@ function HomePage() {
               <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-[#444]"></hr>
             </div>
             <div>
-              {/* <Carousel items={trailerItems} /> */}
+              <Carousel items={trailerItems} />
             </div>
             {/* <RecommendedMovies /> */}
           </div>

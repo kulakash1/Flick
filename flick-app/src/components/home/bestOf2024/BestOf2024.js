@@ -3,10 +3,12 @@ import { FaStar, FaRegStar, FaStarHalf } from 'react-icons/fa';
 import imgA from '../../../images/img Test.png'
 
 const BestOf2024 = (props) => {
+
+  // console.log("2024  Best Data",props);
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 !== 0;
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+    const emptyStars = 10 - fullStars - (halfStar ? 1 : 0);
 
     return (
       <>
@@ -22,10 +24,10 @@ const BestOf2024 = (props) => {
   };
 
   return (
-    <div className="flex flex-rowmb-4">
+    <div className="flex flex-row mb-4 w-[300px] hover:scale-105 transform transition-transform duration-200">
       <div>
         {/* <img src={props.imageUrl} alt={props.title} className="w-24 h-24 object-cover" /> */}
-        <img src={imgA} alt={props.title} className="w-24 h-24 object-cover" />
+        <img src={props.imageUrl} alt={props.title} className="w-[400px] h-40 object-cover" />
       </div>
       <div className="flex flex-col ml-4">
         <div>
