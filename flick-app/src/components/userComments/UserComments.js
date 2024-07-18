@@ -108,6 +108,7 @@ const UserComments = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
+        <div>
         <div className="container p-4 bg-[#1c1c1e] text-[#fff]">
             <h1 className="text-3xl font-bold mb-6 text-center">User Comments</h1>
 
@@ -265,6 +266,7 @@ const UserComments = () => {
                     Next
                 </button>
             </div>
+        </div>
         </div>
     );
 };
