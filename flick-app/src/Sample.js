@@ -21,7 +21,7 @@ const Sample = () => {
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
-    console.log("MOVIES DATA : ", movies);
+    // console.log("MOVIES DATA : ", movies);
 
     return (
         <div>

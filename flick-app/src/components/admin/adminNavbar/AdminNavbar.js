@@ -7,7 +7,7 @@ import SearchInput from "../../navbar/searchInput/SearchInput";
 function AdminNavbar() {
   const [menuToggle, setMenuToggle] = useState(false);
   return (
-    <div>
+    <div className='bg-[#1c1c1e] text-[#fff]'>
       {/* Navbar Start */}
       <div>
         {/* <div className="bg-[#f7931e] h-10 items-center flex justify-between p-4"> */}
@@ -47,13 +47,18 @@ function AdminNavbar() {
               </Link>
             </li>
             <li className="mb-2">
-              <Link to="/admin/reviews" className="text-gray-300 hover:text-white">
-                Reviews
+              <Link to="/admin/articles" className="text-gray-300 hover:text-white">
+                Articles
               </Link>
             </li>
             <li className="mb-2">
-              <Link to="/comments" className="text-gray-300 hover:text-white">
+              <Link to="/admin/comments" className="text-gray-300 hover:text-white">
                 Comments
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/" className="text-gray-300 hover:text-white">
+                HomePage
               </Link>
             </li>
             <button>LogOut</button>

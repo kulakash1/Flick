@@ -9,6 +9,7 @@ require("dotenv").config();
 const movieRoute = require('./Routes/movie.js')
 // const userRoute = require('./Routes/user.js')
 const userCommentsRoute = require('./Routes/userComments.js')
+const webSeriesRoute = require('./Routes/webSeries.js')
 
 app.use(bodyParser.json());
 
@@ -18,5 +19,6 @@ app.use(cors())
 app.use(movieRoute);
 // app.use(userRoute);
 app.use(userCommentsRoute);
+app.use(webSeriesRoute);
 
 module.exports = app;

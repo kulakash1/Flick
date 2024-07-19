@@ -141,19 +141,55 @@ export const weekTopReviewerData = [
 ];
 
 // For Web Items
-export const webItems = [
-  { imageUrl: "path/to/image2.jpg", title: "Web Title 2", rating: 3.5 },
-  { imageUrl: "path/to/image3.jpg", title: "Web Title 3", rating: 3 },
-  { imageUrl: "path/to/image4.jpg", title: "Web Title 4", rating: 4 },
-  { imageUrl: "path/to/image5.jpg", title: "Web Title 5", rating: 5 },
-  { imageUrl: "path/to/image6.jpg", title: "Web Title 6", rating: 3 },
-  { imageUrl: "path/to/image1.jpg", title: "Web Title 7", rating: 5 },
-  { imageUrl: "path/to/image2.jpg", title: "Web Title 8", rating: 4 },
-  { imageUrl: "path/to/image3.jpg", title: "Web Title 9", rating: 3 },
-  { imageUrl: "path/to/image4.jpg", title: "Web Title 10", rating: 4 },
-  { imageUrl: "path/to/image5.jpg", title: "Web Title 11", rating: 5 },
-  { imageUrl: "path/to/image6.jpg", title: "Web Title 12", rating: 3 },
-];
+// export const webItems = [
+//   { imageUrl: "path/to/image2.jpg", title: "Web Title 2", rating: 3.5 },
+//   { imageUrl: "path/to/image3.jpg", title: "Web Title 3", rating: 3 },
+//   { imageUrl: "path/to/image4.jpg", title: "Web Title 4", rating: 4 },
+//   { imageUrl: "path/to/image5.jpg", title: "Web Title 5", rating: 5 },
+//   { imageUrl: "path/to/image6.jpg", title: "Web Title 6", rating: 3 },
+//   { imageUrl: "path/to/image1.jpg", title: "Web Title 7", rating: 5 },
+//   { imageUrl: "path/to/image2.jpg", title: "Web Title 8", rating: 4 },
+//   { imageUrl: "path/to/image3.jpg", title: "Web Title 9", rating: 3 },
+//   { imageUrl: "path/to/image4.jpg", title: "Web Title 10", rating: 4 },
+//   { imageUrl: "path/to/image5.jpg", title: "Web Title 11", rating: 5 },
+//   { imageUrl: "path/to/image6.jpg", title: "Web Title 12", rating: 3 },
+// ];
+
+
+let webItems = [];
+
+async function fetchWebSeries() {
+  try {
+    const response = await fetch("http://localhost:3001/api/webseries/list");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    // console.log('Fetched data:', data);  // Log the data to check its structure
+    if (data && Array.isArray(data.results)) {
+      const movies = data.results;
+      webItems = movies.map((movie) => ({
+        title: movie.title || "",
+        language: movie.original_language || "",
+        country: movie.original_language || "",
+        release_date: movie.release_date || "",
+        overview: movie.overview || "",
+        // imageUrl: `https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}` || "",
+        imageUrl: movie.poster_path || "",
+        rating: movie.vote_average || 0,
+      }));
+    } else {
+      console.error("Invalid data format:", data);
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+// Fetch movies and populate movieItems before exporting
+await fetchWebSeries();
+export { webItems };
+
 // const TestNew = () => {
 //   const dataTest = useLoaderData();
 //   console.log(dataTest);

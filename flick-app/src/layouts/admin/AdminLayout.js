@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 function AdminLayout({ children }) {
   return (
-    <div className="flex">
+    <div className="flex flex-col">
       <AdminNavbar />
       <div className="flex-1 flex flex-col">
         <Header />
