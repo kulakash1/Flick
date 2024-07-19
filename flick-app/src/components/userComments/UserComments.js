@@ -113,13 +113,7 @@ const UserComments = () => {
             <h1 className="text-3xl font-bold mb-6 text-center">User Comments</h1>
 
             <div className="mb-8">
-                <input
-                    type="text"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Search by critic name or movie title"
-                    className="border p-2 w-full mb-4 text-black"
-                />
+                
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input
                         type="text"
@@ -204,6 +198,16 @@ const UserComments = () => {
                     Sort by Critic Name {sortOrder === 'asc' ? <FaSortAlphaDown className="ml-2" /> : <FaSortAlphaUp className="ml-2" />}
                 </button>
             </div>
+            
+            <div>
+            <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search by critic name or movie title"
+                    className="border p-2 w-full mb-4 text-black"
+                />
+            </div>
 
             <div>
                 {currentComments.map(comment => (
@@ -211,18 +215,12 @@ const UserComments = () => {
                         <div className="flex items-center justify-between">
                             <h2 className="text-xl font-bold text-black">{comment.criticName}</h2>
                             <div className="flex space-x-2">
-                                <button
-                                    onClick={() => handleEdit(comment)}
-                                    className="bg-yellow-500 text-white p-2 rounded"
-                                >
-                                    <FaEdit />
-                                </button>
-                                <button
-                                    onClick={() => handleDelete(comment.commentId)}
-                                    className="bg-red-500 text-white p-2 rounded"
-                                >
-                                    <FaTrash />
-                                </button>
+                            <button onClick={() => handleEdit(comment)} className="text-blue-500 hover:text-blue-700">
+                                            <FaEdit />
+                                        </button>
+                                        <button onClick={() => handleDelete(comment.commentId)} className="text-red-500 hover:text-red-700">
+                                            <FaTrash />
+                                        </button>
                             </div>
                         </div>
                         <img
