@@ -15,13 +15,14 @@ import About from "./components/about/About.js";
 import Settings from "./components/profile/settings/Settings.js";
 import HomePage from "./components/home/testFol/TestFile.js";
 import App from "./App.js";
-import { webItemsLoaderData } from "./components/home/data/Data.js";
+import { movieItems, webItemsLoaderData } from "./components/home/data/Data.js";
 import UserComments from "./components/userComments/UserComments.js";
 import { Layout } from "antd";
 import Dashboard from "./pages/dashboard/Dashboard.js";
 import Users from "./pages/users/Users.js";
 import AdminLayout from "./layouts/admin/AdminLayout.js";
 import Comments from "./pages/comments/Comments.js";
+import Articles from "./pages/articles/Articles.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,11 +39,11 @@ const router = createBrowserRouter(
       <Route exact path="admin" component={Dashboard} element={<AdminLayout />}>
         <Route path="users" element={<Users />} />
         {/* <Route path="movies" element={<Movies />} /> */}
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard data={movieItems} />} />
         <Route path="comments" element={<Comments />} />
+        <Route path="articles" element={<Articles />} />
         {/* <Route path="about-us" element={<About />} />
         <Route path="profile" element={<Profile />} />
-        <Route path="articles" element={<Articles />} />
         <Route path="profile/settings" element={<Settings />} /> */}
       </Route>
     </Route>

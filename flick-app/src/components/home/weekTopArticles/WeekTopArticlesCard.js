@@ -34,8 +34,8 @@ export default function WeekTopArticlesCard(props) {
     // </div>
     <div className="bg-[#6D435A] h-[400px] w-[400px] mb-4 hover:scale-105 transform transition-transform duration-200">
       <div className="flex flex-col">
-        <div className="bg-[#D9D9D9] h-[200px] rounded-bl-lg rounded-br-lg">
-          <img src={props.image} alt="article.jpg" />
+        <div className="bg-[#D9D9D9] h-[300px] rounded-bl-lg rounded-br-lg">
+          <img src={props.image} alt="article.jpg" className="h-full w-full rounded-bl-lg rounded-br-lg" />
         </div>
         <div>
           <h1>{props.title}</h1>

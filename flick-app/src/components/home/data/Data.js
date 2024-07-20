@@ -4,30 +4,62 @@ import {
   useLoaderData,
 } from "react-router-dom";
 
-// For Week Top Articles Data
-export const weekTopArticlesData = [
-  {
-    imageUrl: "Image Location",
-    title: "Article Title",
-    byPerson: "By This Person",
-    description: "Links to top social media platforms",
-    link: "https://www.facebook.com",
-  },
-  {
-    imageUrl: "Image 2",
-    title: "AT 2",
-    byPerson: "BTP 2",
-    description: "Descrip 2",
-    link: "https://www.twitter.com",
-  },
-  {
-    imageUrl: "Image 3",
-    title: "AT 3",
-    byPerson: "BTP 3",
-    description: "Desc 3",
-    link: "https://www.instagram.com",
-  },
-];
+let weekTopArticlesData = [];
+
+async function fetchUserArticles() {
+  try {
+    const response = await fetch("http://localhost:3001/api/users/articlelist");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    // console.log("Before Fetched data:", data); // Log the data to check its structure
+
+    if (data && Array.isArray(data)) {
+      weekTopArticlesData = data.map((item) => ({
+        imageUrl: item.imageUrl || "",
+        title: item.title || "",
+        byPerson: item.byPerson || "",
+        description: item.description || "",
+        link: item.link || "",
+      }));
+    } else {
+      console.error("Invalid data format:", data);
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+// Fetch articles and populate weekTopArticlesData before exporting
+await fetchUserArticles();
+// console.log("After Fetched data:", weekTopArticlesData); // Log the data to check its structure
+export { weekTopArticlesData };
+
+// // For Week Top Articles Data
+// export const weekTopArticlesData = [
+//   {
+//     imageUrl: "Image Location",
+//     title: "Article Title",
+//     byPerson: "By This Person",
+//     description: "Links to top social media platforms",
+//     link: "https://www.facebook.com",
+//   },
+//   {
+//     imageUrl: "Image 2",
+//     title: "AT 2",
+//     byPerson: "BTP 2",
+//     description: "Descrip 2",
+//     link: "https://www.twitter.com",
+//   },
+//   {
+//     imageUrl: "Image 3",
+//     title: "AT 3",
+//     byPerson: "BTP 3",
+//     description: "Desc 3",
+//     link: "https://www.instagram.com",
+//   },
+// ];
 
 // // For Week Top Comment User Data
 // export const weekTopCommentUserData = [
@@ -70,7 +102,7 @@ async function fetchUserComments() {
       throw new Error("Network response was not ok");
     }
     const data = await response.json();
-    console.log("Before Fetched data:", data); // Log the data to check its structure
+    // console.log("Before Fetched data:", data); // Log the data to check its structure
 
     if (data && Array.isArray(data)) {
       weekTopCommentUserData = data.map((listItem) => ({
@@ -93,7 +125,7 @@ async function fetchUserComments() {
 
 // Fetch movies and populate movieItems before exporting
 await fetchUserComments();
-console.log("After Fetched data:", weekTopCommentUserData); // Log the data to check its structure
+// console.log("After Fetched data:", weekTopCommentUserData); // Log the data to check its structure
 export { weekTopCommentUserData };
 
 // For Week Popular Reviewer Data
@@ -154,7 +186,6 @@ export const weekTopReviewerData = [
 //   { imageUrl: "path/to/image5.jpg", title: "Web Title 11", rating: 5 },
 //   { imageUrl: "path/to/image6.jpg", title: "Web Title 12", rating: 3 },
 // ];
-
 
 let webItems = [];
 
@@ -264,7 +295,9 @@ let trailerItems = [];
 
 async function fetchUpcomingMovies() {
   try {
-    const response = await fetch("http://localhost:3001/api/movies/upcominglist");
+    const response = await fetch(
+      "http://localhost:3001/api/movies/upcominglist"
+    );
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -616,7 +649,9 @@ let popularMovieItems = [];
 
 async function fetchPopularMovies() {
   try {
-    const response = await fetch("http://localhost:3001/api/movies/popularlist");
+    const response = await fetch(
+      "http://localhost:3001/api/movies/popularlist"
+    );
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -648,7 +683,6 @@ await fetchPopularMovies();
 bestOf2024Data = popularMovieItems;
 // export { popularMovieItems };
 export { bestOf2024Data };
-
 
 // For Movie Dropdown Data
 export const movieDropdownData = movieCatalogueItems.map((item) => ({

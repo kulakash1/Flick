@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Test.css"; // Add appropriate styles
 import Footer from "../footer/Footer";
 import WeekTopArticlesCard from "../weekTopArticles/WeekTopArticlesCard";
@@ -15,7 +15,23 @@ import HomepageTopCarousel from "../carousel/HomepageTopCarousel.js";
 import RecommendedMovies from "../recommendedMovies/RecommendedMovies.js";
 import BestOf2024 from "../bestOf2024/BestOf2024.js";
 
-import TestNew, { bestOf2024Data, movieDropdownData, yearDropdownData, categoryDropdownData, reviewsDropdownData, countryDropdownData, languageDropdownData, movieCatalogueItems, trailerItems, movieItems, webItems, weekPopularReviewerData, weekTopArticlesData, weekTopReviewerData, weekTopCommentUserData } from '../data/Data'; // Adjust the path as needed
+import TestNew, {
+  bestOf2024Data,
+  movieDropdownData,
+  yearDropdownData,
+  categoryDropdownData,
+  reviewsDropdownData,
+  countryDropdownData,
+  languageDropdownData,
+  movieCatalogueItems,
+  trailerItems,
+  movieItems,
+  webItems,
+  weekPopularReviewerData,
+  weekTopArticlesData,
+  weekTopReviewerData,
+  weekTopCommentUserData,
+} from "../data/Data"; // Adjust the path as needed
 import TestCOmponent from "../test/TestCOmponent.js";
 
 function Header() {
@@ -30,6 +46,35 @@ function Header() {
 function HomePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 11;
+
+  // For search Functionality in Movie Catalogue
+  const [selectedMovie, setSelectedMovie] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedReview, setSelectedReview] = useState("");
+  const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [searchTerm, setSearchTerm] = useState(""); // Added state for search term
+
+  // State for filtered items
+  const [filteredItems, setFilteredItems] = useState(movieCatalogueItems);
+
+  // useEffect(() => {
+  //   // Filter items whenever the search term or any filter changes
+  //   const result = movieCatalogueItems.filter((item) => {
+  //     return (
+  //       (title === "" || item.movie.includes(selectedMovie)) &&
+  //       // (selectedMovie === "" || item.movie.toLowerCase().includes(selectedMovie.toLowerCase())) &&
+  //       (year === "" || item.year === selectedYear) &&
+  //       (rating === "" || item.review === selectedReview) &&
+  //       (language === "" || item.language === selectedLanguage) &&
+  //       // (searchTerm === "" || item.title.toLowerCase().includes(searchTerm.toLowerCase()))
+  //     );
+  //   });
+  //   setFilteredItems(result);
+  // }, [selectedMovie, selectedYear, selectedReview, selectedLanguage, searchTerm]);
+
+  // const handleSearchChange = (e) => {
+  //   setSearchTerm(e.target.value);
+  // };
 
   return (
     <div className="homepage bg-[#1c1c1e] text-[#fff]">
@@ -101,6 +146,7 @@ function HomePage() {
               filterWidth="180px"
               filterHeight="50px"
               placeholderData="Movie"
+              onChange={(e) => setSelectedMovie(e.target.value)}
             />
           </div>
           <div>
@@ -109,6 +155,7 @@ function HomePage() {
               filterWidth="160px"
               filterHeight="50px"
               placeholderData="Year"
+              onChange={(e) => setSelectedYear(e.target.value)}
             />
           </div>
           <div>
@@ -117,6 +164,7 @@ function HomePage() {
               filterWidth="200px"
               filterHeight="50px"
               placeholderData="Category"
+              onChange={e => setSelectedCategory(e.target.value)}
             /> */}
           </div>
           <div>
@@ -125,6 +173,7 @@ function HomePage() {
               filterWidth="200px"
               filterHeight="50px"
               placeholderData="Reviews"
+              onChange={(e) => setSelectedReview(e.target.value)}
             />
           </div>
           <div>
@@ -133,6 +182,7 @@ function HomePage() {
               filterWidth="200px"
               filterHeight="50px"
               placeholderData="Country"
+              onChange={e => setSelectedCountry(e.target.value)}
             /> */}
           </div>
           <div>
@@ -141,19 +191,25 @@ function HomePage() {
               filterWidth="200px"
               filterHeight="50px"
               placeholderData="Language"
+              onChange={(e) => setSelectedLanguage(e.target.value)}
             />
           </div>
           <div>
-            <IoSearchCircleOutline className="text-[50px] w-[40px]" />
+            <IoSearchCircleOutline
+              className="text-[50px] w-[40px] cursor-pointer"
+              // onClick={handleSearchClick}
+              // onClick={handleSearchChange }
+              onClick={() => {}}
+            />
           </div>
         </div>
         <div className="flex flex-wrap justify-between">
-          {movieCatalogueItems
+          {filteredItems
             .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
             .map((item, index) => (
-              <div key={index} className="w-1/4">
+              <div key={index} className="w-1/4 mb-4">
                 <MovieCatalogueCard item={item} />
-          {/* <TestCOmponent items={item} /> */}
+                {/* <TestCOmponent items={item} /> */}
               </div>
             ))}
         </div>
