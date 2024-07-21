@@ -25,11 +25,7 @@ const userSchema = Sequelize.define("user", {
         allowNull: true
     },
     password: {
-        type: sequelize.DataTypes.STRING,
-        allowNull: false
-    },
-    confirmPassword: {
-        type: sequelize.DataTypes.STRING,
+        type: sequelize.DataTypes.STRING(255), // Ensure sufficient length
         allowNull: false
     },
     profileImage: {
@@ -43,16 +39,25 @@ const userSchema = Sequelize.define("user", {
     }
 });
 
+// Hash the password before creating a new user
 userSchema.beforeCreate(async (user, options) => {
-    if (user.changed("password")) {
-        const hash = await bcrypt.hash(user.password, 8);
-        user.password = hash;
+    if (user.password) {
+        user.password = await bcrypt.hash(user.password, 8);
     }
 });
 
+// Method to compare entered password with hashed password
 userSchema.prototype.comparePassword = async function (password) {
-    const result = await bcrypt.compare(password, this.password);
-    return result;
+    try {
+        console.log("Plain password:", password);
+        console.log("Encrypted password:", this.password);
+        const isMatch = await bcrypt.compare(password, this.password);
+        console.log("Password match:", isMatch);
+        return isMatch;
+    } catch (error) {
+        console.error("Error comparing passwords:", error);
+        throw new Error("Error comparing passwords");
+    }
 };
 
 module.exports = userSchema;
