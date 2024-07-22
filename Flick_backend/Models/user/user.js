@@ -36,7 +36,11 @@ const userSchema = Sequelize.define("user", {
         type: sequelize.DataTypes.BOOLEAN,
         defaultValue: false,
         allowNull: false
-    }
+    },
+    otp: {
+        type: sequelize.DataTypes.STRING,
+        allowNull: true,
+    },
 });
 
 // Hash the password before creating a new user
@@ -49,10 +53,7 @@ userSchema.beforeCreate(async (user, options) => {
 // Method to compare entered password with hashed password
 userSchema.prototype.comparePassword = async function (password) {
     try {
-        console.log("Plain password:", password);
-        console.log("Encrypted password:", this.password);
         const isMatch = await bcrypt.compare(password, this.password);
-        console.log("Password match:", isMatch);
         return isMatch;
     } catch (error) {
         console.error("Error comparing passwords:", error);

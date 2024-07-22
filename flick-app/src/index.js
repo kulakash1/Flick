@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
@@ -6,6 +6,7 @@ import Home from "./components/home/Home.js";
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route,
   RouterProvider,
 } from "react-router-dom";
@@ -23,17 +24,34 @@ import Users from "./pages/users/Users.js";
 import AdminLayout from "./layouts/admin/AdminLayout.js";
 import Comments from "./pages/comments/Comments.js";
 import Articles from "./pages/articles/Articles.js";
+import AuthModal from "./components/home/authModal/AuthModal.js";
+import { isAuthenticated } from "./utils/auth.js";
+
+// const [isModalOpen, setIsModalOpen] = useState(false);
+// const [isModalOpen, setIsModalOpen] = useState(false);
+
+// const toggleModal = () => setIsModalOpen(!isModalOpen);
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<App />}>
+      {/* <Route path="/" element={isAuthenticated() ? <App /> : <Navigate to="/login" />} > */}
         <Route path="" element={<HomePage />} />
         <Route path="contact-us" element={<Contact />} />
         <Route path="user-comments" element={<UserComments />} />
         <Route path="about-us" element={<About />} />
         <Route path="profile" element={<Profile />} />
         <Route path="profile/settings" element={<Settings />} />
+        <Route
+          path="/login"
+          element={<AuthModal isOpen={true}  />}
+          // element={<AuthModal isOpen={true} onClose={false} />}
+        />
+        {/* <Route
+          path="/login"
+          element={<AuthModal isOpen={isModalOpen} onClose={toggleModal} />}
+        /> */}
       </Route>
       {/* <Route path="" element={<HomePage />} loader={webItemsLoaderData}/> */}
       <Route exact path="admin" component={Dashboard} element={<AdminLayout />}>
