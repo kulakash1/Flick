@@ -35,6 +35,7 @@ import { isAuthenticated } from "./utils/auth.js";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
+        <Route path="/q" element={<Home />} />
       <Route path="/" element={<App />}>
       {/* <Route path="/" element={isAuthenticated() ? <App /> : <Navigate to="/login" />} > */}
         <Route path="" element={<HomePage />} />

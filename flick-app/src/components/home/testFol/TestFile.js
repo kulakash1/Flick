@@ -97,7 +97,7 @@ function HomePage() {
         <div className="flex flex-row gap-4">
           <div className="flex flex-col w-2/3">
             <div>
-              <HomepageTopCarousel />
+              <HomepageTopCarousel movieCarouselItem={movieCatalogueItems} />
             </div>
             <div>
               <h2>Recommended</h2>

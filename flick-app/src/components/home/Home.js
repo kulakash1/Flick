@@ -30,18 +30,13 @@ function Home() {
     <div>
         <div className=' bg-[#352D39] h-cover'>
         <div className="d-flex flex-row">
-        {/* <MenuItems clicked={true}/> */}
-        <Navbar />
-        {/* <HomepageTopCarousel /> */}
-        {/* <HomePage /> */}
+        <MenuItems clicked={true}/>
+        {/* <Navbar /> */}
         {/* <Sample /> */}
-        {/* <Footer /> */}
-        {/* <MenuItemsOption /> */}
+        <MenuItemsOption />
 
         </div>
-        {/* <MenuItems clicked={clicked}/> */}
-        {/* <NavbarTest /> */}
-        {/* <MultiLevelDrawer /> */}
+        <MultiLevelDrawer />
             </div>
         </div>
   )
