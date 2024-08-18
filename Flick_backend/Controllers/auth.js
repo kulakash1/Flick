@@ -239,12 +239,20 @@ exports.resetPassword = async (req, res) => {
       return res.status(400).json({ message: "Passwords do not match" });
     }
 
-    const user = await userSchema.findOne({ where: { email, otp } });
+    const user = await userSchema.findOne({ where: { email } });
 
     if (!user) {
-      return res.status(400).json({ message: "Invalid OTP or email" });
+      return res.status(404).json({ message: "User Not Found!" });
     }
 
+    if (user.otp !== otp) {
+      return res.status(400).json({ message: "Invalid OTP" });
+    }
+
+    if(!user.verified) {
+      return res.status(400).json({ message: "User not verified! Plese Verify your account first" });
+    }
+    
     user.password = await bcrypt.hash(newPassword, 8);
     user.otp = null; // Clear the OTP after successful password reset
     await user.save();

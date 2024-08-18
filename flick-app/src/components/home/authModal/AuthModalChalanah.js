@@ -6,12 +6,12 @@ import VerifyEmail from './authComp/VerifyEmail';
 import ResetPassword from './authComp/ResetPassword';
 import { FaTimes } from 'react-icons/fa';
 
-const AuthModal = ({ isModalOpen, onClose }) => {
-  const [activeComponent, setActiveComponent] = useState('login');
+const AuthModal = ({ isModalOpen,onClose }) => {
+  // const [activeComponent, setActiveComponent] = useState('login');
   // const [activeComponent, setActiveComponent] = useState('signup');
   // const [activeComponent, setActiveComponent] = useState('forgotPassword');
   // const [activeComponent, setActiveComponent] = useState('verifyEmail');
-  // const [activeComponent, setActiveComponent] = useState('resetPassword');
+  const [activeComponent, setActiveComponent] = useState('resetPassword');
   const [emailForReset, setEmailForReset] = useState('');
   
   if (!isModalOpen) return null;
@@ -49,7 +49,7 @@ const AuthModal = ({ isModalOpen, onClose }) => {
         {renderComponent()}
         <div className="flex justify-center mt-4 bottom-2 left-0 right-0">
           <button
-            className={`py-2 px-4 rounded-tl-lg rounded-tr-lg ${activeComponent !== 'signup' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+            className={`py-2 px-4 rounded-tl-lg rounded-tr-lg ${activeComponent === 'login' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
             onClick={() => setActiveComponent('login')}
           >
             Login

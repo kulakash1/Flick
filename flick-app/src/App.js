@@ -16,9 +16,9 @@ const App = () => {
           onClick={toggleModal}
           className="bg-blue-500 p-2 rounded"
         >
-          Login/Signup
-        </button>
-        <AuthModal isOpen={isModalOpen} onClose={toggleModal} />
+        Login/Signup
+      </button>
+      <AuthModal isModalOpen={isModalOpen} onClose={toggleModal} />
       <Outlet />
       <Footer />
     </div>
