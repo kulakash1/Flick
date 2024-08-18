@@ -88,16 +88,17 @@ const LoginTab = ({ onForgotPassword, onClose }) => {
         console.log('Logged in successfully');
         onClose(); // Close the modal on successful login
       }
-    } catch (error) {
-      if (error.response && error.response.status === 400) {
-        const errorMessages = error.response.data.errors.map(err => `${err.msg}`).join('\n');
-        alert(errorMessages);
-      } else if (error.response) {
-        alert(error.response.data.error);
-      }
-        else {
-        console.error('Login error:', error);
-        alert('An unexpected error occurred. Please try again.');
+    } 
+    catch (error) {
+      // console.error('Login error:', error);
+  
+      if (error.response && error.response.data && Array.isArray(error.response.data.errors)) {
+        // If errors are an array, combine all error messages into one string
+        const errorMessage = error.response.data.errors.map(err => err.msg).join('\n');
+        alert(errorMessage);
+      } else {
+        // Fallback to a general error message
+        alert(error.response.data.error || 'An unexpected error occurred. Please try again.');
       }
     }
   };
@@ -232,7 +233,15 @@ const ForgotPasswordTab = ({ onBack, onProceed }) => {
       }
     } catch (error) {
       console.error('Forgot password error:', error);
-      alert('Request failed. Please try again.');
+  
+      if (error.response && error.response.data && Array.isArray(error.response.data.errors)) {
+        // If errors are an array, combine all error messages into one string
+        const errorMessage = error.response.data.errors.map(err => err.msg).join('\n');
+        alert(errorMessage);
+      } else {
+        // Fallback to a general error message
+        alert(error.response.data.message || 'An unexpected error occurred');
+      }
     }
   };
 
@@ -275,8 +284,7 @@ const VerifyEmailTab = ({ onBack }) => {
         onBack();
       }
     } catch (error) {
-      console.error('Verify email error:', error);
-      alert('Verification failed. Please try again.');
+      alert(error.response.data.error);
     }
   };
 

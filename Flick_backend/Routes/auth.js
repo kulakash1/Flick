@@ -2,17 +2,27 @@ const express = require('express');
 const router = express.Router();
 
 const authApiController = require('../Controllers/auth.js');
-const { validateUser, validateLogin, validate } = require('../Middlewares/authValidator.js');
+const {
+    validateUser,
+    validateLogin,
+    validateVerifyEmail,
+    validateForgotPassword,
+    validate
+} = require('../Middlewares/authValidator.js');
 
-router.post('/api/auth/signup',  authApiController.signup);
-// router.post('/api/auth/signup', validateUser, validate, authApiController.signup);
+// Signup route with validation
+router.post('/api/auth/signup', validateUser, validate, authApiController.signup);
 
-// router.post('/api/auth/login', authApiController.login);
+// Login route with validation
 router.post('/api/auth/login', validateLogin, validate, authApiController.login);
 
-// router.post('/api/auth/login', validateLogin, validate, authApiController.login);
-router.post('/api/auth/forgot-password', authApiController.forgotPassword);
+// Forgot password route with validation
+router.post('/api/auth/forgot-password', validateForgotPassword, validate, authApiController.forgotPassword);
+
+// Reset password route (can add validation if needed)
 router.post('/api/auth/reset-password', authApiController.resetPassword);
-router.post('/api/auth/verify-email', authApiController.verifyEmail);
+
+// Verify email route with validation
+router.post('/api/auth/verify-email', validateVerifyEmail, validate, authApiController.verifyEmail);
 
 module.exports = router;
