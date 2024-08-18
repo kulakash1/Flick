@@ -8,7 +8,7 @@ let weekTopArticlesData = [];
 
 async function fetchUserArticles() {
   try {
-    const response = await fetch("http://localhost:3001/api/users/articlelist");
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/articlelist`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -97,7 +97,7 @@ let weekTopCommentUserData = [];
 
 async function fetchUserComments() {
   try {
-    const response = await fetch("http://localhost:3001/api/users/commentlist");
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/commentlist`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -191,7 +191,7 @@ let webItems = [];
 
 async function fetchWebSeries() {
   try {
-    const response = await fetch("http://localhost:3001/api/webseries/list");
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/webseries/list`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -227,7 +227,7 @@ export { webItems };
 // }
 // export default TestNew;
 //   export const webItemsLoaderData = async() => {
-//     const response = await fetch('http://localhost:3001/api/movies/popular');
+//     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/movies/popular`);
 //     const webItemsData = await response.json();
 //     // .then(response => {
 //     //     if (!response.ok) {
@@ -260,7 +260,7 @@ let movieItems = [];
 
 async function fetchMovies() {
   try {
-    const response = await fetch("http://localhost:3001/api/movies/list");
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/movies/list`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -295,8 +295,7 @@ let trailerItems = [];
 
 async function fetchUpcomingMovies() {
   try {
-    const response = await fetch(
-      "http://localhost:3001/api/movies/upcominglist"
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/movies/upcominglist`
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");
@@ -538,7 +537,7 @@ export { movieCatalogueItems };
 
 // async function fetchMoviesCatalogue() {
 //     try {
-//         const response = await fetch('http://localhost:3001/api/movies/list');
+//         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/movies/list');
 //         if (!response.ok) {
 //             throw new Error('Network response was not ok');
 //         }
@@ -649,8 +648,7 @@ let popularMovieItems = [];
 
 async function fetchPopularMovies() {
   try {
-    const response = await fetch(
-      "http://localhost:3001/api/movies/popularlist"
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/movies/popularlist`
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");

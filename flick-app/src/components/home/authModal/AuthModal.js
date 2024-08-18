@@ -51,7 +51,7 @@ const AuthModal = ({ isOpen, onClose }) => {
           ) : isResetPassword ? (
             <ResetPasswordTab onBack={handleBackToLogin} email={emailForReset} />
           ) : isLogin ? (
-            <LoginTab onForgotPassword={() => setIsForgotPassword(true)} />
+            <LoginTab onForgotPassword={() => setIsForgotPassword(true)} onClose={onClose} />
           ) : (
             <SignupTab />
           )}
@@ -75,20 +75,30 @@ const AuthModal = ({ isOpen, onClose }) => {
   );
 };
 
-const LoginTab = ({ onForgotPassword }) => {
+const LoginTab = ({ onForgotPassword, onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/auth/login', { email, password });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, { email, password });
 
-      if (response.data.message) {
-        alert(response.data.message);
+      if (response.data.message === 'Login successful!') {
+        // alert(response.data.message);
+        console.log('Logged in successfully');
+        onClose(); // Close the modal on successful login
       }
     } catch (error) {
-      console.error('Login error:', error);
-      alert('Login failed. Please try again.');
+      if (error.response && error.response.status === 400) {
+        const errorMessages = error.response.data.errors.map(err => `${err.msg}`).join('\n');
+        alert(errorMessages);
+      } else if (error.response) {
+        alert(error.response.data.error);
+      }
+        else {
+        console.error('Login error:', error);
+        alert('An unexpected error occurred. Please try again.');
+      }
     }
   };
 
@@ -135,7 +145,7 @@ const SignupTab = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/auth/signup', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/signup`, {
         name,
         username,
         email,
@@ -149,7 +159,8 @@ const SignupTab = () => {
       }
     } catch (error) {
       console.error('Signup error:', error);
-      alert('Signup failed. Please try again.');
+      // alert('Signup failed. Please try again.');
+      alert(error.response.data.message);
     }
   };
 
@@ -213,11 +224,11 @@ const ForgotPasswordTab = ({ onBack, onProceed }) => {
 
   const handleForgotPassword = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/auth/forgot-password', { email });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/forgot-password`, { email });
 
       if (response.data.message) {
         alert(response.data.message);
-        onProceed(email);
+        onProceed(email); // Pass the email to the parent component for the next step
       }
     } catch (error) {
       console.error('Forgot password error:', error);
@@ -257,7 +268,7 @@ const VerifyEmailTab = ({ onBack }) => {
 
   const handleVerifyEmail = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/auth/verify-email', { email, otp });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/verify-email`, { email, otp });
 
       if (response.data.message) {
         alert(response.data.message);
@@ -309,7 +320,7 @@ const ResetPasswordTab = ({ onBack, email }) => {
 
   const handleResetPassword = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/auth/reset-password', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/reset-password`, {
         email,
         otp,
         newPassword,

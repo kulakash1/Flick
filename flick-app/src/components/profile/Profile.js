@@ -18,7 +18,7 @@ const Profile = ({ userId }) => {
 
     const fetchUser = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/api/users/${userId}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userId}`);
             setUser(response.data);
             setFormData({
                 name: response.data.name,
@@ -42,7 +42,7 @@ const Profile = ({ userId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:3001/api/users/${userId}`, formData);
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/users/${userId}`, formData);
             fetchUser();
             setEditMode(false);
         } catch (error) {

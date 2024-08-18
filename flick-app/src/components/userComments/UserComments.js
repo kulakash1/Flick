@@ -27,7 +27,7 @@ const UserComments = () => {
 
     const fetchComments = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/api/users/commentlist');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/commentlist`);
             setComments(response.data);
         } catch (error) {
             console.error('Error fetching comments:', error);
@@ -46,9 +46,9 @@ const UserComments = () => {
         e.preventDefault();
         try {
             if (editMode) {
-                await axios.put(`http://localhost:3001/api/users/commentlist/${formData.commentId}`, formData);
+                await axios.put(`${process.env.REACT_APP_API_URL}/api/users/commentlist/${formData.commentId}`, formData);
             } else {
-                await axios.post('http://localhost:3001/api/users/commentlist', formData);
+                await axios.post(`${process.env.REACT_APP_API_URL}/api/users/commentlist`, formData);
             }
             fetchComments();
             setFormData({
@@ -75,7 +75,7 @@ const UserComments = () => {
 
     const handleDelete = async (commentId) => {
         try {
-            await axios.delete(`http://localhost:3001/api/users/commentlist/${commentId}`);
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/commentlist/${commentId}`);
             fetchComments();
         } catch (error) {
             console.error('Error deleting comment:', error);

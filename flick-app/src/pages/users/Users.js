@@ -14,7 +14,7 @@ function Users() {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/auth/users');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/users`);
       const data = await response.json();
       setUsers(data);
     } catch (error) {
@@ -29,7 +29,7 @@ function Users() {
       return;
     }
     try {
-      await fetch('http://localhost:3001/api/auth/signup', {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ function Users() {
   const handleUpdateUser = async () => {
     if (!selectedUser) return;
     try {
-      await fetch(`http://localhost:3001/api/auth/users/${selectedUser.id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/auth/users/${selectedUser.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ function Users() {
 
   const handleDeleteUser = async (id) => {
     try {
-      await fetch(`http://localhost:3001/api/auth/users/${id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/auth/users/${id}`, {
         method: 'DELETE',
       });
       fetchUsers();

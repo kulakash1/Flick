@@ -13,7 +13,7 @@ function NavbarTest() {
         <div className="h-12 items-center flex justify-between p-4">
             <div className="logo flex">
                 {/* <img src={logoImg} alt='' /> */}
-                <h1 className='text-3xl font-bold'>SwaadSay</h1>
+                <h1 className='text-3xl font-bold'>Flick</h1>
             </div>
             {
                 menuToggle?

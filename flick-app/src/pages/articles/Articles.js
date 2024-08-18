@@ -13,7 +13,7 @@ const Articles = () => {
 
     const fetchArticles = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/api/users/articlelist');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/articlelist`);
             setArticles(response.data);
         } catch (error) {
             console.error('Error fetching articles:', error);
@@ -22,7 +22,7 @@ const Articles = () => {
 
     const handleAddArticle = async () => {
         try {
-            const response = await axios.post('http://localhost:3001/api/users/articlelist', newArticle);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/articlelist`, newArticle);
             setArticles([...articles, response.data]);
             setNewArticle({ imageUrl: '', title: '', byPerson: '', description: '', link: '' });
         } catch (error) {
@@ -32,7 +32,7 @@ const Articles = () => {
 
     const handleUpdateArticle = async () => {
         try {
-            await axios.put(`http://localhost:3001/api/users/articlelist/${editingArticle.id}`, editingArticle);
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/users/articlelist/${editingArticle.id}`, editingArticle);
             setArticles(articles.map(article => (article.id === editingArticle.id ? editingArticle : article)));
             setEditingArticle(null);
         } catch (error) {
@@ -42,7 +42,7 @@ const Articles = () => {
 
     const handleDeleteArticle = async (id) => {
         try {
-            await axios.delete(`http://localhost:3001/api/users/articlelist/${id}`);
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/articlelist/${id}`);
             setArticles(articles.filter(article => article.id !== id));
         } catch (error) {
             console.error('Error deleting article:', error);

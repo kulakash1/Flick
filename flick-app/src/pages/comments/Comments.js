@@ -21,7 +21,7 @@ const Comments = () => {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/api/users/commentlist");
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/commentlist`);
       setComments(response.data);
       setLoading(false);
     } catch (error) {
@@ -36,7 +36,7 @@ const Comments = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/api/users/commentlist/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/commentlist/${id}`);
       setComments(comments.filter(comment => comment.commentId !== id));
     } catch (error) {
       setError(error.message);
@@ -45,7 +45,7 @@ const Comments = () => {
 
   const handleUpdate = async (id) => {
     try {
-      const response = await axios.put(`http://localhost:3001/api/users/commentlist/${id}`, currentComment);
+      const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/users/commentlist/${id}`, currentComment);
       setComments(comments.map(comment => comment.commentId === id ? response.data : comment));
       setIsEditing(false);
       setCurrentComment({
@@ -67,7 +67,7 @@ const Comments = () => {
   const handleCreate = async () => {
     try {
       const newComment = { ...currentComment, commentId: uuidv4() }; // Generate a unique ID for the new comment
-      const response = await axios.post("http://localhost:3001/api/users/commentlist", newComment);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/commentlist`, newComment);
       setComments([...comments, response.data]);
       setIsEditing(false);
       setCurrentComment({

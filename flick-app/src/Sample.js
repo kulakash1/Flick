@@ -4,7 +4,7 @@ const Sample = () => {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/movies/popular')
+        fetch(`${process.env.REACT_APP_API_URL}/api/movies/popular`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
