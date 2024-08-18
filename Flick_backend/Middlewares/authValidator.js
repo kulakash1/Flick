@@ -17,11 +17,19 @@ exports.validateUser = [
 
 // Validation middleware for login
 exports.validateLogin = [
-    // Check if email is valid
-    check('email').isEmail().withMessage('Enter a valid email'),
-    // Check if password is not empty
-    check('password').not().isEmpty().withMessage('Password is required')
-];
+    // Check if email is provided
+    check('email')
+      .notEmpty()
+      .withMessage('Email is Required')
+      .bail() // If email is empty, stop further validation on this field
+      .isEmail()
+      .withMessage('Enter a valid email'),
+  
+    // Check if password is provided
+    check('password')
+      .notEmpty()
+      .withMessage('Password is Required')
+  ];
 
 // Validate the request and handle errors
 exports.validate = (req, res, next) => {
