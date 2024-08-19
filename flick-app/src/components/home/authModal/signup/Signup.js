@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Signup = () => {
+const Signup = ({ onProceed }) => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -22,9 +22,18 @@ const Signup = () => {
 
       if (response.data.message) {
         alert(response.data.message);
+        if(response.data.message === "User registered successfully! Please verify your email to login.") {
+          onProceed(email); // Pass the email to the parent component for the next step
+        }
       }
     } catch (error) {
-      alert(error.response.data.message || 'Signup failed. Please try again.');
+      if (error.response && error.response.data && Array.isArray(error.response.data.errors)) {
+        const errorMessage = error.response.data.errors.map(err => err.msg).join('\n');
+        alert(errorMessage);
+      } else {
+        // console.error('Signup error:', error);
+        alert(error.response.data.message || 'Signup failed. An unexpected error occurred. Please try again.');
+      }
     }
   };
 

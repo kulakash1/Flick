@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const VerifyEmail = ({ onBack }) => {
-  const [email, setEmail] = useState('');
+const VerifyEmail = ({ onBack, email }) => {
+  // const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
 
   const handleVerifyEmail = async () => {
@@ -21,13 +21,13 @@ const VerifyEmail = ({ onBack }) => {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Verify Email</h2>
-      <input
+      {/* <input
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className="w-full p-2 mb-2 border rounded-lg"
-      />
+      /> */}
       <input
         type="text"
         placeholder="OTP"

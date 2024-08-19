@@ -10,17 +10,17 @@ exports.validateUser = [
 
     // Check if mobile number is provided and valid
     check('mobileNumber')
-        .notEmpty().withMessage('Mobile Number is Required')
-        .isMobilePhone().withMessage('Enter a valid Mobile Number'),
+        .notEmpty().withMessage('Mobile Number is Required'),
+        // .isMobilePhone().withMessage('Enter a valid Mobile Number'),
 
     // Check if email is valid
     check('email')
         .notEmpty().withMessage('Email is Required')
         .isEmail().withMessage('Enter a valid email'),
 
-    // Check if password is at least 6 characters long
-    check('password')
-        .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
+    // // Check if password is at least 6 characters long
+    // check('password')
+    //     .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
 
     // Check if password confirmation matches password
     check('confirmPassword').custom((value, { req }) => {

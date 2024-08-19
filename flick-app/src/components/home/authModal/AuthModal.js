@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Login from './authComp/Login';
-import Signup from './authComp/Signup';
-import ForgotPassword from './authComp/ForgotPassword';
-import VerifyEmail from './authComp/VerifyEmail';
-import ResetPassword from './authComp/ResetPassword';
+import Login from './login/Login';
+import Signup from './signup/Signup';
+import ForgotPassword from './forgotPassword/ForgotPassword';
+import VerifyEmail from './verifyEmail/VerifyEmail';
+import ResetPassword from './resetPassword/ResetPassword';
 import { FaTimes } from 'react-icons/fa';
 
 const AuthModal = ({ isModalOpen, onClose }) => {
@@ -13,6 +13,7 @@ const AuthModal = ({ isModalOpen, onClose }) => {
   // const [activeComponent, setActiveComponent] = useState('verifyEmail');
   // const [activeComponent, setActiveComponent] = useState('resetPassword');
   const [emailForReset, setEmailForReset] = useState('');
+  const [emailForVerification, setEmailForVerification] = useState('');
   
   if (!isModalOpen) return null;
   const renderComponent = () => {
@@ -20,7 +21,10 @@ const AuthModal = ({ isModalOpen, onClose }) => {
       case 'login':
         return <Login onForgotPassword={() => setActiveComponent('forgotPassword')} onClose={onClose} />;
       case 'signup':
-        return <Signup onClose={onClose} />;
+        return <Signup onClose={onClose} onProceed={(email) => {
+          setEmailForVerification(email);
+          setActiveComponent('verifyEmail');
+        }}/>;
       case 'forgotPassword':
         return (
           <ForgotPassword
@@ -32,7 +36,7 @@ const AuthModal = ({ isModalOpen, onClose }) => {
           />
         );
       case 'verifyEmail':
-        return <VerifyEmail onBack={() => setActiveComponent('login')} />;
+        return <VerifyEmail onBack={() => setActiveComponent('login')} email={emailForVerification}/>;
       case 'resetPassword':
         return <ResetPassword onBack={() => setActiveComponent('login')} email={emailForReset} />;
       default:
